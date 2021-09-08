@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public float jumpTime = .4f, jumpCounter, jumpForce = 10f;
     public bool isJumping;
 
-    public float speed = 3f;
+    public float speed = 5f;
 
     void Start()
     {
@@ -36,9 +36,13 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name == "box")
+        switch (col.gameObject.tag)
         {
-            SceneManager.LoadScene("SampleScene"); // reseta cena
+            case "limbo": // se caiu no limbo e colidiu com isso
+            case "dogs": // se colidiu com dogs
+                Scene cena = SceneManager.GetActiveScene(); // pega nome da cena atual
+                SceneManager.LoadScene(cena.name); // reseta cena
+                break;
         }
     }
     
