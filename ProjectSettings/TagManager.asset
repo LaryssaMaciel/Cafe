@@ -12,6 +12,7 @@ TagManager:
   - rest
   - cliente
   - task
+  - txtTask
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,15 +19,37 @@ public class PlayerController : MonoBehaviour
 
     public float speed = 5f;
 
+    private EndLVLController endlvl;
+    private bool pause = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        endlvl = GameObject.FindWithTag("end").GetComponent<EndLVLController>();
     }
 
     void Update()
     {
         Jump();
         Movement();
+        Pause();
+    }
+
+    void Pause()
+    {
+        if (Input.GetButtonDown("Pause"))
+        {
+            pause = !pause;
+        }
+
+        if (pause && endlvl.end == false)
+        {
+            endlvl.EndScreen(0, true); // pause
+        }
+        else if (!pause && endlvl.end == false)
+        {
+            endlvl.EndScreen(1, false); // resume
+        }
     }
 
     void Movement()

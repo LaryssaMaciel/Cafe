@@ -15,19 +15,23 @@ public class EndLVLController : MonoBehaviour
     
     private bool taskCompleted = false;
 
-    public GameObject panel;
+    public GameObject panel, btnNext;
+
+    public bool end = false;
 
     private void Awake()
     {
         _taskController = GameObject.FindWithTag("task").GetComponent<TaskController>();
         _deliveryController = GameObject.FindWithTag("Player").GetComponent<DeliveryController>();
-        txtEnd = GameObject.Find("txtEnd").GetComponent<TMP_Text>();
+        txtEnd = GameObject.FindWithTag("txtTask").GetComponent<TMP_Text>();
         panel = GameObject.Find("Panel");
+        btnNext = GameObject.Find("btnNext");
     }
 
     private void Start()
     {
         panel.SetActive(false);
+        btnNext.SetActive(false);
     }
 
     void Update()
@@ -35,19 +39,29 @@ public class EndLVLController : MonoBehaviour
         if (_deliveryController.contEntregue >= _taskController.minEntregas)
         {
             this.taskCompleted = true;
+            btnNext.SetActive(true);
         }
+        
+        txtEnd.text = TaskController.taskTxt.text;
+        if (this.taskCompleted == true)
+        {
+            txtEnd.fontStyle = FontStyles.Strikethrough;
+        }
+    }
+
+    public bool EndScreen(int x, bool b)
+    {
+        Time.timeScale = x; // pausa
+        panel.SetActive(b);
+        return true;
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
-            panel.SetActive(true);
-            txtEnd.text = TaskController.taskTxt.text;
-            if (this.taskCompleted == true)
-            {
-                txtEnd.fontStyle = FontStyles.Strikethrough;
-            }
+            end = true;
+            EndScreen(0, true);
         }
     }
 }

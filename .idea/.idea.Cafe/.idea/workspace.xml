@@ -12,6 +12,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TaskController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BtnManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1xmDUzEWIUqUeeuJKtvPBlvCGEA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -59,6 +60,7 @@
       <workItem from="1630951602306" duration="2854000" />
       <workItem from="1631138391071" duration="410000" />
       <workItem from="1633558103772" duration="10013000" />
+      <workItem from="1633609606702" duration="2858000" />
     </task>
     <servers />
   </component>
