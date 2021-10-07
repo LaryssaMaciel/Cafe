@@ -6,6 +6,11 @@ TagManager:
   tags:
   - dogs
   - limbo
+  - rest
+  - cont
+  - contE
+  - cliente
+  - end
   layers:
   - Default
   - TransparentFX
