@@ -6,11 +6,12 @@ TagManager:
   tags:
   - dogs
   - limbo
-  - rest
   - cont
   - contE
-  - cliente
   - end
+  - rest
+  - cliente
+  - task
   layers:
   - Default
   - TransparentFX

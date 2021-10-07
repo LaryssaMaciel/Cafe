@@ -9,8 +9,8 @@ public class DeliveryController : MonoBehaviour
 {
     private TextMeshProUGUI txtContPego;
     private TextMeshProUGUI txtContEntregue;
-    [SerializeField] private int contPego = 0; // contador de pedidos pegos
-    [SerializeField] private int contEntregue = 0; // contador de pedidos entregue
+    public int contPego = 0; // contador de pedidos pegos
+    public int contEntregue = 0; // contador de pedidos entregue
     
     void Start()
     {

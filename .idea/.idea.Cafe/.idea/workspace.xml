@@ -10,6 +10,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TaskController.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1xmDUzEWIUqUeeuJKtvPBlvCGEA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -55,7 +58,7 @@
       <updated>1630951467653</updated>
       <workItem from="1630951602306" duration="2854000" />
       <workItem from="1631138391071" duration="410000" />
-      <workItem from="1633558103772" duration="6404000" />
+      <workItem from="1633558103772" duration="10013000" />
     </task>
     <servers />
   </component>
