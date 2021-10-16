@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool isJumping;
 
     public float speed = 5f;
+    private Vector3 autoDir;
 
     private EndLVLController endlvl;
     private bool pause = false;
@@ -51,10 +52,22 @@ public class PlayerController : MonoBehaviour
             endlvl.EndScreen(1, false); // resume
         }
     }
-
+    
     void Movement()
     {
-        this.transform.Translate(Vector3.right * Time.deltaTime * speed); // move
+        if (Input.GetKey(KeyCode.A))
+        {
+            autoDir = Vector3.left; // ré
+            // flipar player
+        }
+        else
+        {
+            autoDir = Vector3.right;
+        }
+        
+        // movimentação em si
+        this.transform.Translate( autoDir * Time.deltaTime * speed + // movimentacao automatica
+                                  Vector3.right * Time.deltaTime * speed * Input.GetAxis("Horizontal")); // + movimentacao manual
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -63,8 +76,7 @@ public class PlayerController : MonoBehaviour
         {
             case "limbo": // se caiu no limbo e colidiu com isso
             case "dogs": // se colidiu com dogs
-                Scene cena = SceneManager.GetActiveScene(); // pega nome da cena atual
-                SceneManager.LoadScene(cena.name); // reseta cena
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name.ToString()); // reseta cena
                 break;
         }
     }
