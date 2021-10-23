@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private LayerMask platformLayer; // layer do chao
     private Rigidbody2D rb;
+    Renderer _renderer;
 
     public bool isGrounded;
     public Transform feetPos;
@@ -22,11 +24,16 @@ public class PlayerController : MonoBehaviour
 
     private EndLVLController endlvl;
     private bool pause = false;
+    public GameObject panel;
 
+    public bool gameOver = false;
+    
     void Start()
     {
+        gameOver = false;
         rb = GetComponent<Rigidbody2D>();
         endlvl = GameObject.FindWithTag("end").GetComponent<EndLVLController>();
+        _renderer = GetComponent<Renderer>();
     }
 
     void Update()
@@ -34,6 +41,13 @@ public class PlayerController : MonoBehaviour
         Jump();
         Movement();
         Pause();
+        EndScreen();
+    }
+
+    void OnBecameInvisible() // se sair da camera, reseta
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name.ToString()); // reseta cena
+        gameOver = true;
     }
 
     void Pause()
@@ -76,7 +90,8 @@ public class PlayerController : MonoBehaviour
         {
             case "limbo": // se caiu no limbo e colidiu com isso
             case "dogs": // se colidiu com dogs
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name.ToString()); // reseta cena
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().name.ToString()); // reseta cena
+                gameOver = true;
                 break;
         }
     }
@@ -108,6 +123,15 @@ public class PlayerController : MonoBehaviour
         else
         {
             isJumping = false;
+        }
+    }
+    
+    public void EndScreen()
+    {
+        if (gameOver)
+        {
+            Time.timeScale = 0;
+            panel.SetActive(true);
         }
     }
 }

@@ -45,6 +45,11 @@ public class BtnManager : MonoBehaviour
             goMenu.SetActive(true);
         }
     }
+
+    public void Sair()
+    {
+        Application.Quit();
+    }
     
     // ### Funções pra gameplay
 

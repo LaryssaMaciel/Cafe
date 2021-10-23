@@ -24,17 +24,18 @@ public class DeliveryController : MonoBehaviour
         txtContEntregue.text = contEntregue.ToString();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "rest")
-        {
-            contPego++; // coleta lanche
-        }
+        // if (other.gameObject.GetComponent<Restaurante>().used == 1) 
+        // {
+        //     contPego++; // coleta lanche
+        //     other.gameObject.GetComponent<Restaurante>().used = 2;
+        // }
 
-        if (other.gameObject.tag == "cliente" && contPego > 0) // se tem lanche sobrando
-        {
-            contEntregue++; // entrega lanche
-            contPego--;
-        }
+        // if (other.gameObject.tag == "cliente" && contPego > 0 && Input.GetButtonDown("Acao")) // se tem lanche sobrando
+        // {
+        //     contEntregue++; // entrega lanche
+        //     contPego--;
+        // }
     }
 }
