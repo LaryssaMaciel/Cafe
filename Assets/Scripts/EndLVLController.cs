@@ -13,43 +13,53 @@ public class EndLVLController : MonoBehaviour
     private DeliveryController _deliveryController;
     public TMP_Text txtEnd;
     
-    private bool taskCompleted = false;
+    public bool taskCompleted = false;
 
     public GameObject panel, btnNext;
 
     public bool end = false;
+    // private string passou1 = "";
 
     private void Awake()
     {
+        // configura variaveis no inicio
         _taskController = GameObject.FindWithTag("task").GetComponent<TaskController>();
         _deliveryController = GameObject.FindWithTag("Player").GetComponent<DeliveryController>();
         txtEnd = GameObject.FindWithTag("txtTask").GetComponent<TMP_Text>();
         panel = GameObject.Find("Panel");
         btnNext = GameObject.Find("btnNext");
+        // passou1 = PlayerPrefs.GetString("fase1");
     }
 
     private void Start()
     {
+        // esconde painel de pause e botao de proxima fase
         panel.SetActive(false);
         btnNext.SetActive(false);
     }
 
     void Update()
     {
+        // checa se a task foi completada
         if (_deliveryController.contEntregue >= _taskController.minEntregas)
         {
             this.taskCompleted = true;
-            btnNext.SetActive(true);
+            txtEnd.fontStyle = FontStyles.Strikethrough;
         }
         
-        txtEnd.text = TaskController.taskTxt.text;
-        if (this.taskCompleted == true)
+        txtEnd.text = TaskController.taskTxt.text; // mostra a task atual
+        
+        if (end) // se passou de fase, mostra botao de proxima fase
         {
-            txtEnd.fontStyle = FontStyles.Strikethrough;
+            btnNext.SetActive(true);
+            // if (SceneManager.GetActiveScene().name.ToString() == "Fase1")
+            // {
+            //     PlayerPrefs.SetString("fase1", "passou");
+            // }
         }
     }
 
-    public bool EndScreen(int x, bool b)
+    public bool EndScreen(int x, bool b) 
     {
         Time.timeScale = x; // pausa
         panel.SetActive(b);

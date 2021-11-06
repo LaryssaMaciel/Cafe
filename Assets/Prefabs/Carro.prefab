@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1634741570601144458}
   m_Layer: 0
   m_Name: Carro
-  m_TagString: limbo
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

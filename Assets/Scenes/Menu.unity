@@ -345,6 +345,7 @@ GameObject:
   m_Component:
   - component: {fileID: 111515806}
   - component: {fileID: 111515805}
+  - component: {fileID: 111515807}
   m_Layer: 0
   m_Name: Menu Manager
   m_TagString: Untagged
@@ -367,6 +368,7 @@ MonoBehaviour:
   goMenu: {fileID: 329736601}
   goFases: {fileID: 467714815}
   goCredits: {fileID: 1267404290}
+  lvl: 0
 --- !u!4 &111515806
 Transform:
   m_ObjectHideFlags: 0
@@ -381,6 +383,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &111515807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111515804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a0eed6a6644f858602227499ebd7fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnFases:
+  - {fileID: 78057006}
+  - {fileID: 955388028}
+  x: 
 --- !u!1 &317517434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,7 +1593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &955388029
 RectTransform:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class ParallaxController : MonoBehaviour
     
     void Start()
     {
-        cam = GameObject.Find("CM vcam1"); //CM vcam1
+        cam = GameObject.FindWithTag("cmCam"); //CM vcam1
         startpos = transform.position.x; // posicao inicial
         startpos_ = transform.position.y; // posicao inicial
         length = GetComponent<SpriteRenderer>().bounds.size.x; // tamanho desse sprite

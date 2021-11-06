@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class TaskController : MonoBehaviour
 {
-    public static TextMeshPro taskTxt;
-    public int minEntregas = 2;
+    public static TextMeshPro taskTxt; // texto da task
+    public int minEntregas = 2; // entregas minimas pra passar de fase
     
     void Start()
     {
-        taskTxt = GetComponent<TextMeshPro>();
+        taskTxt = GetComponent<TextMeshPro>(); // acessa o texto
     }
     
     void Update()
     {
-        taskTxt.text = "Faça " + minEntregas.ToString() + " entregas";
+        taskTxt.text = "Faça " + minEntregas.ToString() + " entregas"; // a task
     }
 }
