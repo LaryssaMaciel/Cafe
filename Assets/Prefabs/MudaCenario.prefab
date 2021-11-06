@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3402774706402400836}
   - component: {fileID: 3402774706402400843}
   m_Layer: 0
-  m_Name: BGManager
+  m_Name: MudaCenario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,7 +10,12 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Renderer _renderer;
-    private Animator anim;
+    private SpriteRenderer sr;
+    public Animator anim;
+    public bool manobra = false;
+    private PontuacaoManager pm;
+    private bool superSpeed = false;
+    private float speTime = 4f, speCounter;
 
     public GameObject dogs;
     public bool dogsCol = false; // se colidiu com dogs
@@ -20,9 +25,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("VIDAS")]
     public float vidas = 3;
-    public bool invencivel = false;
-    public float invTime = 2f;
-    public float invCounter = 0;
+    private bool invencivel = false;
+    private float invTime = 2f;
+    private float invCounter = 0;
     public Image lifebar;
 
     [Header("GROUND CHECK")]
@@ -47,8 +52,7 @@ public class PlayerController : MonoBehaviour
     public bool gameOver = false; // se morreu
     private EndLVLController endlvl; // acessa o endlvl
     private bool pause = false; // se ta pausado
-    //private bool falling = false;
-    SpriteRenderer a;
+    
     void Start()
     {
         // configurando variavel ao inicio da fase
@@ -57,9 +61,10 @@ public class PlayerController : MonoBehaviour
         endlvl = GameObject.FindWithTag("end").GetComponent<EndLVLController>();
         _renderer = GetComponent<Renderer>();
         anim = GetComponent<Animator>();
-        a = GetComponent<SpriteRenderer>();
+        sr = GetComponent<SpriteRenderer>();
         lifebar = GameObject.FindWithTag("lifebar").GetComponent<Image>();
         dogsCol = false;
+        pm = GameObject.FindWithTag("txtPontos").GetComponent<PontuacaoManager>();
     }
 
     void Update()
@@ -71,8 +76,36 @@ public class PlayerController : MonoBehaviour
         }
         Pause();
         EndScreen();
-        Invencibilidade();
+        PowerUps();
         VidasManager();
+        Manobra();
+        PlayerNaCam();    
+    }
+
+    void PlayerNaCam() // manter player na visaod a camera
+    {
+        Vector3 pos = Camera.main.WorldToViewportPoint (transform.position);         
+        pos.x = Mathf.Clamp01(pos.x);         
+        pos.y = Mathf.Clamp01(pos.y);         
+        transform.position = Camera.main.ViewportToWorldPoint(pos);
+    }
+
+    void Manobra()
+    {
+        if (Input.GetButtonDown("Acao1") && !isJumping && !gameOver && anim.GetBool("manobra") == false)
+        {
+            StartCoroutine("Act", 1.5f);
+            manobra = true;
+        } 
+    }
+
+    IEnumerator Act()
+    {
+        anim.SetBool("manobra", true);
+        yield return new WaitForSeconds(1.5f);
+        pm.pontos += 10 * pm.multiplicador;
+        anim.SetBool("manobra", false);
+        manobra = false;
     }
 
     void VidasManager()
@@ -86,28 +119,50 @@ public class PlayerController : MonoBehaviour
         lifebar.fillAmount = vidas / 3; // life bar
     }
 
-    void Invencibilidade()
+    float x = .25f, y = 0; // timers pra piscar o player
+    void PowerUps()
     {
-        if (invencivel == true)
+        // super velocidade
+        if (superSpeed)
         {
-            if (invCounter > 0)
+            if (speCounter > 0)
             {
-                invCounter -= Time.deltaTime;
-                a.color = Color.red;
+                speCounter -= Time.deltaTime;
             }
             else
             {
-                
-                a.color = Color.white;
-                invencivel = false;
+                speCounter = 0;
+                superSpeed = false;
             }
         }
-    }
+        else
+        {
+            speed = 5f;
+            pm.multiplicador = 1;
+        }
 
-    void OnBecameInvisible() // se sair da camera, reseta
-    {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name.ToString()); // reseta cena
-        //gameOver = true;
+        // invencibilidade
+        if (invencivel)
+        {
+            sr.color = new Color(1f, 1f, 1f, .5f);
+            if (invCounter > 0) { invCounter -= Time.deltaTime; }
+            else {
+                invCounter = 0;
+                invencivel = false;
+            }
+            
+            // pisca player
+            if (y > 0) { y -= Time.deltaTime; }
+            else {
+                _renderer.enabled = !_renderer.enabled;
+                y = x;
+            }
+        }
+        else
+        {
+            sr.color = new Color(1f, 1f, 1f, 1f);
+            _renderer.enabled = true;
+        }
     }
 
     void Pause() // metodo de pause
@@ -160,16 +215,11 @@ public class PlayerController : MonoBehaviour
             {
                 case "dogs": // se colidiu com dogs
                 case "obstacle": // obstaculos normais
-                    //SceneManager.LoadScene(SceneManager.GetActiveScene().name.ToString()); // reseta cena
                     vidas--;
                     invencivel = true;
+                    invTime = 2f;
                     invCounter = invTime;
                     break;
-                //case "buraco":
-                    //falling = true;
-                    // this.gameObject.GetComponent<CapsuleCollider2D>().isTrigger = true;
-                    // this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-                    //break;
             }
         }
 
@@ -185,6 +235,26 @@ public class PlayerController : MonoBehaviour
                     dogsCol = true;
                 }
                 break;
+            //  POWER UPS   
+            case "powerup":
+                // invencibilidade
+                if (col.gameObject.GetComponent<PowerUpManager>().tipo == "inv")
+                {  
+                    invencivel = true;
+                    invTime = 4f;
+                    invCounter = invTime;
+                    Destroy(col.gameObject);
+                }
+                // super velocidade
+                else if (col.gameObject.GetComponent<PowerUpManager>().tipo == "vel")
+                {
+                    speed = 10f;
+                    superSpeed = true;
+                    speTime = 4f;
+                    pm.multiplicador = 2;
+                    speCounter = speTime;
+                }
+                break;
         }
     }
     
@@ -193,7 +263,7 @@ public class PlayerController : MonoBehaviour
         // checa se ta no chao
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, platformLayer); 
         
-        if (isGrounded == true && Input.GetButtonDown("Jump")) //&&falling == false | se apertou pra pular
+        if (isGrounded == true && Input.GetButtonDown("Jump") && manobra == false) //&&falling == false | se apertou pra pular
         {
             isJumping = true;
             jumpCounter = jumpTime;

@@ -19,6 +19,7 @@ TagManager:
   - lifebar
   - cenario
   - cmCam
+  - powerup
   layers:
   - Default
   - TransparentFX

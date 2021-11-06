@@ -34,7 +34,7 @@ public class InteractController : MonoBehaviour
                 {
                     dc.contEntregue++;
                     dc.contPego--;
-                    pm.pontos += 50;
+                    pm.pontos += 50 * pm.multiplicador;
                     emojo.GetComponent<SpriteRenderer>().sprite = spt[0];
                     emojo.SetActive(true);
                 }
