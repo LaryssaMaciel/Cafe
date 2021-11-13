@@ -91,13 +91,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3975784680357128904}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.058020532, y: -1.4700003}
+  m_Offset: {x: -5.0692344, y: 0.7757244}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -108,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8509053, y: 6.83}
+  m_Size: {x: 0.17034435, y: 11.321449}
   m_EdgeRadius: 0
 --- !u!1 &4407836748342711560
 GameObject:
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 7996437202714643590}
   - component: {fileID: 5901973132886975321}
   m_Layer: 6
-  m_Name: Square (7)
+  m_Name: chao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

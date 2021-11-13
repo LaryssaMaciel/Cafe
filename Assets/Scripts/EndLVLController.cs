@@ -20,6 +20,9 @@ public class EndLVLController : MonoBehaviour
     public bool end = false;
     // private string passou1 = "";
 
+    private PlayerController player;
+    private SoundManager soundManager;
+
     private void Awake()
     {
         // configura variaveis no inicio
@@ -28,6 +31,8 @@ public class EndLVLController : MonoBehaviour
         txtEnd = GameObject.FindWithTag("txtTask").GetComponent<TMP_Text>();
         panel = GameObject.Find("Panel");
         btnNext = GameObject.Find("btnNext");
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         // passou1 = PlayerPrefs.GetString("fase1");
     }
 
@@ -49,20 +54,30 @@ public class EndLVLController : MonoBehaviour
         
         txtEnd.text = TaskController.taskTxt.text; // mostra a task atual
         
-        if (end) // se passou de fase, mostra botao de proxima fase
-        {
-            btnNext.SetActive(true);
-            // if (SceneManager.GetActiveScene().name.ToString() == "Fase1")
-            // {
-            //     PlayerPrefs.SetString("fase1", "passou");
-            // }
-        }
+        
     }
 
     public bool EndScreen(int x, bool b) 
     {
         Time.timeScale = x; // pausa
         panel.SetActive(b);
+
+        if (this.taskCompleted == true && end == true) // se passou de fase, mostra botao de proxima fase
+        {
+            btnNext.SetActive(true);
+            player.audioSource.clip = soundManager.som[7];
+            player.audioSource.Play();
+            // if (SceneManager.GetActiveScene().name.ToString() == "Fase1")
+            // {
+            //     PlayerPrefs.SetString("fase1", "passou");
+            // }
+        }
+        else if (this.taskCompleted == false && end == true)
+        {
+            player.audioSource.clip = soundManager.som[3];
+            player.audioSource.Play();
+        }
+        
         return true;
     }
     

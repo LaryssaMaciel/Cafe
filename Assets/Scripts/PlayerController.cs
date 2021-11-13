@@ -12,10 +12,14 @@ public class PlayerController : MonoBehaviour
     private Renderer _renderer;
     private SpriteRenderer sr;
     public Animator anim;
-    public bool manobra = false;
+    public int animState = 0;
+    public bool manobra = false, entrega = false;
     private PontuacaoManager pm;
     private bool superSpeed = false;
     private float speTime = 4f, speCounter;
+    public AudioSource audioSource, motoAudio;
+    private SoundManager soundManager;
+    private CarroController carro;
 
     public GameObject dogs;
     public bool dogsCol = false; // se colidiu com dogs
@@ -51,7 +55,7 @@ public class PlayerController : MonoBehaviour
     public GameObject panel; // painel de pause
     public bool gameOver = false; // se morreu
     private EndLVLController endlvl; // acessa o endlvl
-    private bool pause = false; // se ta pausado
+    public bool pause = false; // se ta pausado
     
     void Start()
     {
@@ -65,6 +69,10 @@ public class PlayerController : MonoBehaviour
         lifebar = GameObject.FindWithTag("lifebar").GetComponent<Image>();
         dogsCol = false;
         pm = GameObject.FindWithTag("txtPontos").GetComponent<PontuacaoManager>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        audioSource = GetComponent<AudioSource>();
+        motoAudio = GameObject.Find("FeetPos").GetComponent<AudioSource>();
+        carro = GameObject.FindWithTag("car").GetComponent<CarroController>();
     }
 
     void Update()
@@ -80,6 +88,21 @@ public class PlayerController : MonoBehaviour
         VidasManager();
         Manobra();
         PlayerNaCam();    
+
+        if (entrega == true)
+        {
+            animState = 4;
+            StartCoroutine("wait", 1f);
+        }
+
+        anim.SetInteger("animState", animState);
+    }
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(1f);
+        entrega = false;
+        animState = 0;
     }
 
     void PlayerNaCam() // manter player na visaod a camera
@@ -92,10 +115,11 @@ public class PlayerController : MonoBehaviour
 
     void Manobra()
     {
-        if (Input.GetButtonDown("Acao1") && !isJumping && !gameOver && anim.GetBool("manobra") == false)
+        if (Input.GetButtonDown("Acao1") && !isJumping && !gameOver && !anim.GetBool("manobra") && !anim.GetBool("entrega"))
         {
             StartCoroutine("Act", 1.5f);
             manobra = true;
+            animState = 3;
         } 
     }
 
@@ -106,6 +130,7 @@ public class PlayerController : MonoBehaviour
         pm.pontos += 10 * pm.multiplicador;
         anim.SetBool("manobra", false);
         manobra = false;
+        animState = 0;
     }
 
     void VidasManager()
@@ -164,21 +189,40 @@ public class PlayerController : MonoBehaviour
             _renderer.enabled = true;
         }
     }
-
+    
+    bool carStop = false;
     void Pause() // metodo de pause
     {
         if (Input.GetButtonDown("Pause"))
         {
             pause = !pause;
         }
-
+        
         if (pause && endlvl.end == false)
         {
             endlvl.EndScreen(0, true); // pause
+            motoAudio.Pause();
+            if (carro.visible)
+            {
+                carro.audioSource.Pause();
+                carStop = true;
+            }
         }
         else if (!pause && endlvl.end == false)
         {
             endlvl.EndScreen(1, false); // resume
+            motoAudio.UnPause();
+            if (carro.visible && carStop)
+            {
+                carro.audioSource.UnPause();
+                carStop = false;
+            }
+        }
+
+        if (endlvl.end)
+        {
+            motoAudio.Pause();
+            carro.audioSource.UnPause();
         }
     }
     
@@ -206,19 +250,22 @@ public class PlayerController : MonoBehaviour
         this.transform.Translate(autoDir * Time.deltaTime * speed + // movimentacao automatica
                                  Vector3.right * Time.deltaTime * speed * Input.GetAxis("Horizontal")); // + movimentacao manual
     }
-
+    
     void OnTriggerStay2D(Collider2D col)
     {
-        if (!invencivel && !gameOver)
+        if (invencivel == false && gameOver == false)
         {
             switch (col.gameObject.tag)
             {
                 case "dogs": // se colidiu com dogs
                 case "obstacle": // obstaculos normais
+                case "car":
                     vidas--;
                     invencivel = true;
                     invTime = 2f;
                     invCounter = invTime;
+                    audioSource.clip = soundManager.som[8];
+                    audioSource.Play();
                     break;
             }
         }
@@ -237,13 +284,14 @@ public class PlayerController : MonoBehaviour
                 break;
             //  POWER UPS   
             case "powerup":
+                audioSource.clip = soundManager.som[6];
+                audioSource.Play();
                 // invencibilidade
                 if (col.gameObject.GetComponent<PowerUpManager>().tipo == "inv")
                 {  
                     invencivel = true;
                     invTime = 4f;
                     invCounter = invTime;
-                    Destroy(col.gameObject);
                 }
                 // super velocidade
                 else if (col.gameObject.GetComponent<PowerUpManager>().tipo == "vel")
@@ -254,6 +302,7 @@ public class PlayerController : MonoBehaviour
                     pm.multiplicador = 2;
                     speCounter = speTime;
                 }
+                Destroy(col.gameObject);
                 break;
         }
     }
@@ -263,23 +312,25 @@ public class PlayerController : MonoBehaviour
         // checa se ta no chao
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, platformLayer); 
         
-        if (isGrounded == true && Input.GetButtonDown("Jump") && manobra == false) //&&falling == false | se apertou pra pular
+        if (isGrounded == true && Input.GetButtonDown("Jump") && !manobra) //&&falling == false | se apertou pra pular
         {
             isJumping = true;
             jumpCounter = jumpTime;
             rb.velocity = jumpForce * Vector2.up;
             
         }
-        else if (isGrounded == true)
+        else if (!isGrounded && !entrega)
         {
-            anim.SetBool("ground", true);
-            anim.SetBool("jump", false);
+            animState = 0;
+            // anim.SetBool("ground", true);
+            // anim.SetBool("jump", false);
         }
 
         if (Input.GetButton("Jump") && isJumping == true) // se ta pulando
         {
-            anim.SetBool("jump", true);
-            anim.SetBool("ground", false);
+            // anim.SetBool("jump", true);
+            // anim.SetBool("ground", false);
+            animState = 1;
             
             if (jumpCounter > 0)
             {
