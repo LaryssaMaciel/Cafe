@@ -401,6 +401,7 @@ MonoBehaviour:
   goSettings: {fileID: 2280503103605958938}
   goCredits: {fileID: 1267404290}
   goTutorial: {fileID: 1079169268}
+  player: {fileID: 0}
   goBTNs: {fileID: 0}
   lvl: 0
 --- !u!4 &111515806
@@ -3168,7 +3169,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Controles\n\nAD / setas para os lados - Mover-se\nW / Espa\xE7o / Seta
-    pra cima - Pular\nE / Enter - Interagir\nQ / R - Manobra radical\nESC / Backspace
+    pra cima - Pular\nE / Enter - Interagir\nQ / L - Manobra radical\nESC / Backspace
     - Pausar\n"
 --- !u!222 &1630018179
 CanvasRenderer:

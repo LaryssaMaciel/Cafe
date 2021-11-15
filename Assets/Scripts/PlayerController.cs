@@ -17,9 +17,10 @@ public class PlayerController : MonoBehaviour
     private PontuacaoManager pm;
     private CarroController carro;
     private SoundManager soundManager;
+    private AutomaticCam camSpeed;
     // powerup
     private bool superSpeed = false; // powerup super velocidade
-    private float speTime = 4f, speCounter; // tempo max do powerup
+    private float speTime = 1.3f, speCounter; // tempo max do powerup
     // dogs
     public GameObject dogs; // dogs
     public bool dogsCol = false; // se colidiu com dogs
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour
     [Header("VIDAS")]
     public float vidas = 3; // vidas totais
     private bool invencivel = false; // dano/powerup
-    private float invTime = 2f; // tempo max de invencibilidade
+    private float invTime = 1.3f; // tempo max de invencibilidade
     private float invCounter = 0; // tempo atual invencibilidade
     public Image lifebar; // barra de vida
 
@@ -52,7 +53,8 @@ public class PlayerController : MonoBehaviour
     public bool isJumping; // se ta pulando
 
     [Header("MOVIMENTACAO")]
-    public float speed = 5f; // velocidade do plaeyr
+    public float speed = 0f; // velocidade do player
+    public float velNormal = 5f;
     private Vector3 autoDir; // direcao da movimentacao automatica 
 
     [Header("PAUSE/ENDLVL")]
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         motoAudio = GameObject.Find("FeetPos").GetComponent<AudioSource>();
         carro = GameObject.FindWithTag("car").GetComponent<CarroController>();
+        camSpeed = GameObject.Find("AutoCam").GetComponent<AutomaticCam>();
     }
 
     void Update()
@@ -147,7 +150,7 @@ public class PlayerController : MonoBehaviour
         lifebar.fillAmount = vidas / 3; // life bar
     }
 
-    float blinkTime = .25f, blinkCounter = 0; // timers pra piscar o player
+    float blinkTime = .10f, blinkCounter = 0; // timers pra piscar o player
     void PowerUps()
     {
         // super velocidade
@@ -161,7 +164,8 @@ public class PlayerController : MonoBehaviour
         }
         else // se nao tem powerup
         {   // volta velocidade a multiplicado normais
-            speed = 5f;
+            speed = velNormal;
+            camSpeed.speed = velNormal;
             pm.multiplicador = 1;
         }
 
@@ -251,7 +255,7 @@ public class PlayerController : MonoBehaviour
                 case "car":
                     vidas--; // perde vida
                     invencivel = true; // invencibilidade breve
-                    invTime = 2f; // tempo de invencibilidade
+                    invTime = 1.3f; // tempo de invencibilidade
                     invCounter = invTime; // começa contador
                     AudioManager(8); // som de dano
                     break;
@@ -276,15 +280,16 @@ public class PlayerController : MonoBehaviour
                 if (col.gameObject.GetComponent<PowerUpManager>().tipo == "inv")
                 {  
                     invencivel = true;
-                    invTime = 4f;
+                    invTime = 1.3f;
                     invCounter = invTime;
                 }
                 // super velocidade
                 else if (col.gameObject.GetComponent<PowerUpManager>().tipo == "vel")
                 {
-                    speed = 10f;
+                    speed = speed * 2;
+                    camSpeed.speed = camSpeed.speed * 2;
                     superSpeed = true;
-                    speTime = 4f;
+                    speTime = 2f;
                     pm.multiplicador = 2;
                     speCounter = speTime;
                 }

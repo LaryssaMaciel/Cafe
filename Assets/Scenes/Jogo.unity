@@ -4649,7 +4649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74eddc5d18c96424d9b631a80b11c41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 10
 --- !u!1 &1660952247
 GameObject:
   m_ObjectHideFlags: 0
@@ -4753,8 +4753,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab67546b7ab9ff44f86fa51b763800c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxEffect: 0
-  parallaxEffectY: 0
+  parallaxEffect: 0.3
+  parallaxEffectY: 0.15
   cam: {fileID: 519420028}
 --- !u!114 &1660952251
 MonoBehaviour:
@@ -6676,6 +6676,10 @@ PrefabInstance:
     - target: {fileID: 8609760576677782235, guid: 49449160e585eb64eaf5eba1366c8417, type: 3}
       propertyPath: panel
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609760576677782235, guid: 49449160e585eb64eaf5eba1366c8417, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8609760576677782235, guid: 49449160e585eb64eaf5eba1366c8417, type: 3}
       propertyPath: invTime

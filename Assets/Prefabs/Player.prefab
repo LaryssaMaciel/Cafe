@@ -504,13 +504,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  dogs: {fileID: 0}
+  dogsCol: 0
   animState: 0
   manobra: 0
   entrega: 0
   audioSource: {fileID: 0}
   motoAudio: {fileID: 0}
-  dogs: {fileID: 0}
-  dogsCol: 0
   cena: 0
   vidas: 3
   lifebar: {fileID: 0}
@@ -523,7 +523,7 @@ MonoBehaviour:
   jumpCounter: 0
   jumpForce: 10
   isJumping: 0
-  speed: 5
+  speed: 20
   panel: {fileID: 0}
   gameOver: 0
   pause: 0

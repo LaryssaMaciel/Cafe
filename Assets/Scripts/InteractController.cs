@@ -34,7 +34,7 @@ public class InteractController : MonoBehaviour
         if (col.gameObject.tag == "Player") // se player colidiu
         {
             this.key.SetActive(true); // mostra img do btn de interacao
-            if (Input.GetButton("Acao") && !this.used) // se nao interagiu antes e clicou btn de interacao
+            if (!this.used) //Input.GetButton("Acao") &&  se nao interagiu antes e clicou btn de interacao
             {   
                 if (this.gameObject.tag == "cliente") // se colidiu com cliente
                 {   
