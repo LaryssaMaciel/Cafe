@@ -9,16 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class LVLManager : MonoBehaviour
 {
-    public GameObject[] btnFases;
-    public string x;
-    
-    void Start()
-    {
-        // x = PlayerPrefs.GetString("fase1");
-        //
-        // if (x == "passou")
-        // {
-        //     btnFases[1].SetActive(true);
-        // }
-    }
+    // public GameObject[] btnFases; 
+    // public string x;
 }

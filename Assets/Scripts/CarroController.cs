@@ -6,51 +6,28 @@ using UnityEngine;
 public class CarroController : MonoBehaviour
 {
     private float speed = 10f; // velocidade do carro 
-    private Transform player;
-    // private PlayerController playerController;
-    public AudioSource audioSource;
-    public bool visible = false;
+    private Transform player; // auxiliar
+    public AudioSource audioSource; // audio do carro
+    public bool visible; // se ta perto do player/na tela
 
     private void Start() 
     {
         player = GameObject.FindWithTag("Player").GetComponent<Transform>(); // acessa o player
-        audioSource = GetComponent<AudioSource>();
-        // playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        audioSource = GetComponent<AudioSource>(); // acessa audio
     }
 
     void Update()
     {
         transform.Translate(Vector2.left * Time.deltaTime * speed); // move automatico
-
-        if (this.transform.position.x < player.transform.position.x - 20f) // se passou do player, se destroi
-        {
-            Destroy(this.gameObject);
-        } 
-        else if (this.transform.position.x > player.transform.position.x + 15f)
-        {
-            audioSource.Play();
-        }
-
-        // if (visible == true)
-        // {
-        //     if (!playerController.pause)
-        //     {
-        //         audioSource.Play();
-        //     }
-        //     else
-        //     {
-        //         audioSource.Stop();
-        //     }
-        // }
+        // se passou do player, se destroi
+        if (this.transform.position.x < player.transform.position.x - 20f) { Destroy(this.gameObject); } 
     }
 
-    // void OnBecameVisible()
-    // {
-    //     visible = true;
-    // }
+    void OnBecameVisible() // se apareceu na tela, ta visivel, buzina
+    {
+        audioSource.Play(); 
+        visible = true;
+    }
 
-    // void OnBecameInvisible()
-    // {
-    //     visible = false;
-    // }
+    void OnBecameInvisible() => visible = false; // fora da tela
 }

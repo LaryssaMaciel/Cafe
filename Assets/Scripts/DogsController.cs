@@ -5,19 +5,22 @@ using UnityEngine.UI;
 
 public class DogsController : MonoBehaviour
 {
-    private PlayerController pc; // acessa o player
     private Rigidbody2D rb;
     public float speed; // velocidade dos dogs
-    float jumpCounter, jumpTime = .2f, jumpForce;
-    private AudioSource audioSource;
+    private float jumpCounter, jumpTime = .2f, jumpForce; // contador, tempo max e forca do pulo
+    private AudioSource audioSource; // audio dos dogs
+
+    // auxiliares
     private EndLVLController endLVL;
     private PlayerController player;
-    
+    private PlayerController pc; 
+
     void Start()
     {
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>(); // acessa o player
-        rb = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody2D>(); // acessa rigdbody
+        audioSource = GetComponent<AudioSource>(); // acessa audio
+        // acessa scripts
         endLVL = GameObject.FindWithTag("end").GetComponent<EndLVLController>();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
@@ -25,52 +28,32 @@ public class DogsController : MonoBehaviour
     void Update()
     {
         speed = pc.speed; // atualiza velocidade de acordo com a do player
-        Movement();
+        Movement(); // chama metodo de movimentacao
 
-        if (endLVL.end || player.pause)
-        {
-            this.audioSource.Pause();
-        }
-        else if (!player.pause)
-        {
-            this.audioSource.UnPause();
-        }
+        // gerencia audio
+        if (endLVL.end || player.pause) { this.audioSource.Pause(); }
+        else if (!player.pause) { this.audioSource.UnPause(); }
     }
 
-    void Movement()
-    {
-        this.transform.Translate(Vector3.right * Time.deltaTime * speed); // move automatico
-    }
+    void Movement() => this.transform.Translate(Vector3.right * Time.deltaTime * speed); // move automatico
     
-    Collider2D col_;
+    Collider2D col_; // objeto que colidiu com dogs
     void OnTriggerEnter2D(Collider2D col)
     {
-        col_ = col;
-        // switch(col.gameObject.tag)
-        // {
-        //     case "buraco":
-        //         jumpForce = 8;
-        //         break;
-        //     // case "obstacleDog":
-        //     //     jumpForce = 5;
-        //     //     break;
-        //     // case "car":
-        //     //     jumpForce = 6.5f;
-        //     //     break;
-        // }
-        switch(col.gameObject.tag)
-        {
+        col_ = col; // atualiza objeto que colidiu
+        // dependendo da tag do que colidiu
+        switch(col.gameObject.tag) 
+        {   
             // DESTROI OBSTACULO
             case "obstacle":
             case "car":
                 col.gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 col.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                StartCoroutine("destroyDelay", 1f);
+                Destroy(col_.gameObject, 1);
                 break;
-            // PULA O BURACO
+            // PULA OBSTACULO
             case "buraco":
-            // case "obstacleDog":
-                jumpForce = 8;
+                jumpForce = 7;
                 jumpCounter = jumpTime;
                 if (jumpCounter > 0)
                 {
@@ -79,11 +62,5 @@ public class DogsController : MonoBehaviour
                 }
                 break;
         }
-    }
-
-    IEnumerator destroyDelay() 
-    {
-        yield return new WaitForSeconds(1f);
-        Destroy(col_.gameObject);
     }
 }

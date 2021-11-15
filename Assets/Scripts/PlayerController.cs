@@ -8,31 +8,35 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    // parametros
     private Rigidbody2D rb;
     private Renderer _renderer;
     private SpriteRenderer sr;
     public Animator anim;
-    public int animState = 0;
-    public bool manobra = false, entrega = false;
+    // auxiliares
     private PontuacaoManager pm;
-    private bool superSpeed = false;
-    private float speTime = 4f, speCounter;
-    public AudioSource audioSource, motoAudio;
-    private SoundManager soundManager;
     private CarroController carro;
-
-    public GameObject dogs;
+    private SoundManager soundManager;
+    // powerup
+    private bool superSpeed = false; // powerup super velocidade
+    private float speTime = 4f, speCounter; // tempo max do powerup
+    // dogs
+    public GameObject dogs; // dogs
     public bool dogsCol = false; // se colidiu com dogs
 
+    public int animState = 0; // estado da animacao
+    public bool manobra = false, entrega = false; // se fez manobra, se fez entrega
+    public AudioSource audioSource, motoAudio; // audios
+
     [Header("VAR GLOBAL CENA ATUAL")]
-    public int cena = 0;
+    public int cena = 0; // cena q muda no fundo
 
     [Header("VIDAS")]
-    public float vidas = 3;
-    private bool invencivel = false;
-    private float invTime = 2f;
-    private float invCounter = 0;
-    public Image lifebar;
+    public float vidas = 3; // vidas totais
+    private bool invencivel = false; // dano/powerup
+    private float invTime = 2f; // tempo max de invencibilidade
+    private float invCounter = 0; // tempo atual invencibilidade
+    public Image lifebar; // barra de vida
 
     [Header("GROUND CHECK")]
     [SerializeField] private LayerMask platformLayer; // layer do chao
@@ -59,7 +63,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
-        // configurando variavel ao inicio da fase
+        // configurando variaveis
         gameOver = false;
         rb = GetComponent<Rigidbody2D>();
         endlvl = GameObject.FindWithTag("end").GetComponent<EndLVLController>();
@@ -76,7 +80,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {
+    {   // chama metodos
         if (!gameOver)
         {
             Movement();
@@ -89,23 +93,23 @@ public class PlayerController : MonoBehaviour
         Manobra();
         PlayerNaCam();    
 
-        if (entrega == true)
+        if (entrega == true) // animacao de entrega
         {
             animState = 4;
             StartCoroutine("wait", 1f);
         }
 
-        anim.SetInteger("animState", animState);
+        anim.SetInteger("animState", animState); // atualiza animacao
     }
 
-    IEnumerator wait()
+    IEnumerator wait() // fim da animacao de entrega
     {
         yield return new WaitForSeconds(1f);
         entrega = false;
         animState = 0;
     }
 
-    void PlayerNaCam() // manter player na visaod a camera
+    void PlayerNaCam() // manter player na visao da camera
     {
         Vector3 pos = Camera.main.WorldToViewportPoint (transform.position);         
         pos.x = Mathf.Clamp01(pos.x);         
@@ -113,7 +117,7 @@ public class PlayerController : MonoBehaviour
         transform.position = Camera.main.ViewportToWorldPoint(pos);
     }
 
-    void Manobra()
+    void Manobra() 
     {
         if (Input.GetButtonDown("Acao1") && !isJumping && !gameOver && !anim.GetBool("manobra") && !anim.GetBool("entrega"))
         {
@@ -123,7 +127,7 @@ public class PlayerController : MonoBehaviour
         } 
     }
 
-    IEnumerator Act()
+    IEnumerator Act() // faz manobra de fato
     {
         anim.SetBool("manobra", true);
         yield return new WaitForSeconds(1.5f);
@@ -135,8 +139,7 @@ public class PlayerController : MonoBehaviour
 
     void VidasManager()
     {
-        if (vidas <= 0)
-        {
+        if (vidas <= 0) {
             vidas = 0;
             gameOver = true;
         }
@@ -144,24 +147,20 @@ public class PlayerController : MonoBehaviour
         lifebar.fillAmount = vidas / 3; // life bar
     }
 
-    float x = .25f, y = 0; // timers pra piscar o player
+    float blinkTime = .25f, blinkCounter = 0; // timers pra piscar o player
     void PowerUps()
     {
         // super velocidade
         if (superSpeed)
         {
-            if (speCounter > 0)
-            {
-                speCounter -= Time.deltaTime;
-            }
-            else
-            {
+            if (speCounter > 0) { speCounter -= Time.deltaTime; } // diminui tempo do powerup
+            else { // acaba poweup
                 speCounter = 0;
                 superSpeed = false;
             }
         }
-        else
-        {
+        else // se nao tem powerup
+        {   // volta velocidade a multiplicado normais
             speed = 5f;
             pm.multiplicador = 1;
         }
@@ -169,23 +168,23 @@ public class PlayerController : MonoBehaviour
         // invencibilidade
         if (invencivel)
         {
-            sr.color = new Color(1f, 1f, 1f, .5f);
-            if (invCounter > 0) { invCounter -= Time.deltaTime; }
-            else {
+            sr.color = new Color(1f, 1f, 1f, .5f); // fica meio transparente
+            if (invCounter > 0) { invCounter -= Time.deltaTime; } // diminui tempo do powerup
+            else { // acaba poweup
                 invCounter = 0;
                 invencivel = false;
             }
             
             // pisca player
-            if (y > 0) { y -= Time.deltaTime; }
-            else {
+            if (blinkCounter > 0) { blinkCounter -= Time.deltaTime; } // diminui tempo do powerup
+            else { // acaba blink
                 _renderer.enabled = !_renderer.enabled;
-                y = x;
+                blinkCounter = blinkTime;
             }
         }
         else
         {
-            sr.color = new Color(1f, 1f, 1f, 1f);
+            sr.color = new Color(1f, 1f, 1f, 1f); // full 
             _renderer.enabled = true;
         }
     }
@@ -193,27 +192,24 @@ public class PlayerController : MonoBehaviour
     bool carStop = false;
     void Pause() // metodo de pause
     {
-        if (Input.GetButtonDown("Pause"))
-        {
-            pause = !pause;
-        }
+        if (Input.GetButtonDown("Pause")) { pause = !pause; }
         
-        if (pause && endlvl.end == false)
+        if (pause && !endlvl.end || gameOver) // se pausou ou deu gameover
         {
             endlvl.EndScreen(0, true); // pause
+            // pausa audios
             motoAudio.Pause();
-            if (carro.visible)
-            {
+            if (carro.visible) {
                 carro.audioSource.Pause();
                 carStop = true;
             }
         }
-        else if (!pause && endlvl.end == false)
+        else if (!pause && !endlvl.end) // resume jogo
         {
             endlvl.EndScreen(1, false); // resume
+            // despausa audios
             motoAudio.UnPause();
-            if (carro.visible && carStop)
-            {
+            if (carro.visible && carStop) {
                 carro.audioSource.UnPause();
                 carStop = false;
             }
@@ -222,70 +218,60 @@ public class PlayerController : MonoBehaviour
         if (endlvl.end)
         {
             motoAudio.Pause();
-            carro.audioSource.UnPause();
+            carro.audioSource.Pause();
         }
     }
     
-    // public WheelJoint2D[] rodas;
     void Movement() //movimentacao do player
     {
-        // for (int i = 0; i < rodas.Length; i++)
-        // {
-        //     JointMotor2D motor = rodas[i].motor;
-        //     motor.motorSpeed = Input.GetAxis("Horizontal") * 200;
-        //     rodas[i].motor = motor;
-        // }
-
         // define direcao da movimentacao automatica
-        if (Input.GetKey(KeyCode.A)) 
-        {
-            autoDir = Vector3.left; // ré
-        }
-        else
-        {
-            autoDir = Vector3.right;
-        }
+        if (Input.GetKey(KeyCode.A)) { autoDir = Vector3.left; } // ré
+        else { autoDir = Vector3.right; } // frente
         
         // movimentação em si (automatica + manual)
-        this.transform.Translate(autoDir * Time.deltaTime * speed + // movimentacao automatica
-                                 Vector3.right * Time.deltaTime * speed * Input.GetAxis("Horizontal")); // + movimentacao manual
+        this.transform.Translate(
+            autoDir * Time.deltaTime * speed + // movimentacao automatica
+            Vector3.right * Time.deltaTime * speed * Input.GetAxis("Horizontal")); // + movimentacao manual
+    }
+
+    void AudioManager(int audio)
+    {
+        audioSource.clip = soundManager.som[audio];
+        audioSource.Play();
     }
     
     void OnTriggerStay2D(Collider2D col)
     {
-        if (invencivel == false && gameOver == false)
+        if (!invencivel && !gameOver) // se nao ta invencivel nem deu gameover
         {
             switch (col.gameObject.tag)
-            {
-                case "dogs": // se colidiu com dogs
-                case "obstacle": // obstaculos normais
+            {   // leva dano, se colidiu com
+                case "dogs": 
+                case "obstacle": 
                 case "car":
-                    vidas--;
-                    invencivel = true;
-                    invTime = 2f;
-                    invCounter = invTime;
-                    audioSource.clip = soundManager.som[8];
-                    audioSource.Play();
+                    vidas--; // perde vida
+                    invencivel = true; // invencibilidade breve
+                    invTime = 2f; // tempo de invencibilidade
+                    invCounter = invTime; // começa contador
+                    AudioManager(8); // som de dano
                     break;
             }
         }
 
         switch (col.gameObject.tag)
-        {
+        {   // gameover, se colidiu com
             case "limbo":
+                AudioManager(3); // som de derrota
                 gameOver = true;
+                endlvl.end = true;
                 dogsCol = true;
                 break;
             case "dogs":
-                if (gameOver)
-                {
-                    dogsCol = true;
-                }
+                if (gameOver) { dogsCol = true; }
                 break;
             //  POWER UPS   
             case "powerup":
-                audioSource.clip = soundManager.som[6];
-                audioSource.Play();
+                AudioManager(6); // som de powerup
                 // invencibilidade
                 if (col.gameObject.GetComponent<PowerUpManager>().tipo == "inv")
                 {  
@@ -309,64 +295,40 @@ public class PlayerController : MonoBehaviour
     
     void Jump () // metodo de pulo
     {
-        // checa se ta no chao
-        isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, platformLayer); 
+        isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, platformLayer); // checa se ta no chao
         
-        if (isGrounded == true && Input.GetButtonDown("Jump") && !manobra) //&&falling == false | se apertou pra pular
-        {
+        if (isGrounded && Input.GetButtonDown("Jump") && !manobra) // se ta no chao, apertou pra pular e nao fez manobra
+        {   // pode pular
             isJumping = true;
-            jumpCounter = jumpTime;
-            rb.velocity = jumpForce * Vector2.up;
-            
+            jumpCounter = jumpTime; // timer de pulo
+            rb.velocity = jumpForce * Vector2.up; // vai pra cima
         }
-        else if (!isGrounded && !entrega)
-        {
-            animState = 0;
-            // anim.SetBool("ground", true);
-            // anim.SetBool("jump", false);
-        }
+        else if (!isGrounded && !entrega) { animState = 0; } // transicao pra animacao de idle
 
-        if (Input.GetButton("Jump") && isJumping == true) // se ta pulando
+        if (Input.GetButton("Jump") && isJumping) // se ta pulando
         {
-            // anim.SetBool("jump", true);
-            // anim.SetBool("ground", false);
-            animState = 1;
-            
-            if (jumpCounter > 0)
-            {
-                
-                rb.velocity = jumpForce * Vector2.up;
-                jumpCounter -= Time.deltaTime;
-            }
-            else
-            {
-                isJumping = false;
-            }
-        }
-        else
-        {
-            isJumping = false;
-        }
+            animState = 1; // animacao de pulo
+            if (jumpCounter > 0) {
+                rb.velocity = jumpForce * Vector2.up; // continua o pulo
+                jumpCounter -= Time.deltaTime; // diminui timer de pulo
+            } else { isJumping = false; } // acabou o pulo
+        } else { isJumping = false; } // parou de pular
     }
     
-    public void EndScreen() // tela de fim de fase/pause
+    public void EndScreen() // tela de endgame/pause
     {
-        if (gameOver && !dogsCol)
-        {
-            Time.timeScale = 0.5f;
-            if (Vector3.Distance(this.transform.position, dogs.transform.position) >= 0)
-            {
+        if (gameOver && !dogsCol) // se deu gameover e dogs nao pegaram player
+        {   
+            Time.timeScale = 0.5f; // camera lenta
+            if (Vector3.Distance(this.transform.position, dogs.transform.position) >= 0) // se dogs tao longe do player
+            {   // dogs vao ate player
                 dogs.transform.position = Vector3.MoveTowards(dogs.transform.position, this.transform.position, 10 * Time.deltaTime);
-            }
-            else
-            {
-                dogsCol = true;
-            }
+            } else { dogsCol = true; } // se chegou no player, colidiu
         }
 
-        if (dogsCol)
-        {
-            Time.timeScale = 0;
+        if (dogsCol) // se colidiu com dogs
+        {   // pause e mostra tela de endgame
+            Time.timeScale = 0; 
             panel.SetActive(true);
         }
     }

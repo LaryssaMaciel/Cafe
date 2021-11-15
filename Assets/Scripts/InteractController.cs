@@ -6,21 +6,17 @@ public class InteractController : MonoBehaviour
 {
     public GameObject key; // img do botao de interacao
     public bool used = false; // se player interagiu com esse obj
+    SoundManager soundManager; // audio
+    public GameObject emojo; // obj do emote do cliente
+    public Sprite[] spt; // sprites de emoji
 
-    public GameObject emojo; 
-    public Sprite[] spt;
-
-    // variaveis auxiliaress
+    // auxiliares
     private DeliveryController dc;
     public GameObject player;
     private PontuacaoManager pm;
-
-    SoundManager soundManager;
-
     
     void Start()
-    {
-        // configura variaveis
+    {   // configura variaveis
         dc = GameObject.FindWithTag("Player").GetComponent<DeliveryController>();
         player = GameObject.FindWithTag("Player");
         pm = GameObject.FindWithTag("txtPontos").GetComponent<PontuacaoManager>();
@@ -28,13 +24,9 @@ public class InteractController : MonoBehaviour
     }
 
     void Update()
-    {
-        // se passou do cliente e nao fez entrega, ele fica com raiva
-        if (this.used == false && this.gameObject.tag == "cliente" && this.transform.position.x < player.transform.position.x - 3f)
-        {
-            emojo.GetComponent<SpriteRenderer>().sprite = spt[1];
-            emojo.SetActive(true);
-        }
+    {   // se passou do cliente e nao fez entrega, ele fica com raiva
+        if (this.used == false && this.gameObject.tag == "cliente" 
+            && this.transform.position.x < player.transform.position.x - 3f) { EmojiUpdate(1, true); }
     }
 
     void OnTriggerStay2D(Collider2D col)
@@ -42,55 +34,47 @@ public class InteractController : MonoBehaviour
         if (col.gameObject.tag == "Player") // se player colidiu
         {
             this.key.SetActive(true); // mostra img do btn de interacao
-            if (Input.GetButton("Acao") && !this.used) // se nao interagiu antes e clicou btn
-            {
-                if (this.gameObject.tag == "cliente" && dc.contPego > 0) // entrega
-                {
-                    player.GetComponent<PlayerController>().entrega = true;
-                    dc.contEntregue++;
-                    dc.contPego--;
-                    pm.pontos += 50 * pm.multiplicador;
-                    emojo.GetComponent<SpriteRenderer>().sprite = spt[0];
-                    emojo.SetActive(true);
-                    player.GetComponent<PlayerController>().audioSource.clip = soundManager.som[2];
-                    player.GetComponent<PlayerController>().audioSource.Play();
-                }
-                else if (this.gameObject.tag == "cliente" && dc.contPego <= 0)
-                {
-                    emojo.GetComponent<SpriteRenderer>().sprite = spt[1];
-                    emojo.SetActive(true);
+            if (Input.GetButton("Acao") && !this.used) // se nao interagiu antes e clicou btn de interacao
+            {   
+                if (this.gameObject.tag == "cliente") // se colidiu com cliente
+                {   
+                    if (dc.contPego > 0) // se tem lanche sobrando
+                    {
+                        player.GetComponent<PlayerController>().entrega = true; // faz entrega
+                        dc.contEntregue++; // incrementa entregas
+                        dc.contPego--; // decrementa lanches
+                        pm.pontos += 50 * pm.multiplicador; // add pontos
+                        EmojiUpdate(0, true); // cliente feliz
+                        AudioUpdate(2); // toca audio de entrega
+                    }
+                    else { EmojiUpdate(1, true); } // se nao tem lanche, cliente com raiva
                 }
                 
-                if (this.gameObject.tag == "rest") // pega
+                if (this.gameObject.tag == "rest") // se colidiu com restaurante
                 {
-                    player.GetComponent<PlayerController>().entrega = true;
-                    dc.contPego++;
-                    player.GetComponent<PlayerController>().audioSource.clip = soundManager.som[2];
-                    player.GetComponent<PlayerController>().audioSource.Play();
+                    player.GetComponent<PlayerController>().entrega = true; // fez entrega
+                    dc.contPego++; // atualiza contador
+                    AudioUpdate(2); // toca audio de entrega
                 }
                 this.used = true; // interagiu
-                //StartCoroutine("wait", 1f);
             }
         }
     }
 
-    // IEnumerator wait()
-    // {
-    //     yield return new WaitForSeconds(1f);
-    //     player.GetComponent<PlayerController>().anim.SetTrigger("a");
-    // }
+    void EmojiUpdate(int sprite, bool active) // atualiza sprite de feedback do cliente
+    {
+        emojo.GetComponent<SpriteRenderer>().sprite = spt[sprite]; // cliente com raiva
+        emojo.SetActive(active);
+    }
+
+    void AudioUpdate(int audio) // atualiza audio
+    {
+        player.GetComponent<PlayerController>().audioSource.clip = soundManager.som[audio];
+        player.GetComponent<PlayerController>().audioSource.Play();
+    }
     
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player")
-        {
-            key.SetActive(false); // esconde img do btn
-            // player.GetComponent<PlayerController>().anim.ResetTrigger("entrega");
-            // if (this.used == false && this.gameObject.tag == "cliente")
-            // {
-            //     emojo.GetComponent<SpriteRenderer>().sprite = spt[1];
-            //     emojo.SetActive(true);
-            // }
-        }
+        if (col.gameObject.tag == "Player") { key.SetActive(false); } // esconde img do btn
     }
 }

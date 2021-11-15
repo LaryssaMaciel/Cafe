@@ -9,19 +9,16 @@ using UnityEngine.SceneManagement;
 
 public class EndLVLController : MonoBehaviour
 {
+    // auxiliares
     private TaskController _taskController;
     private DeliveryController _deliveryController;
-    public TMP_Text txtEnd;
-    
-    public bool taskCompleted = false;
-
-    public GameObject panel, btnNext;
-
-    public bool end = false;
-    // private string passou1 = "";
-
     private PlayerController player;
-    private SoundManager soundManager;
+    
+    public TMP_Text txtEnd; // texto da task na UI/Pause/Endgame
+    public bool taskCompleted = false; // se a tarefa foi completa
+    public GameObject panel, btnNext; // painel de pause, botao de proxima fase
+    public bool end = false; // se chegou no fim da fase
+    private SoundManager soundManager; // audio
 
     private void Awake()
     {
@@ -37,55 +34,48 @@ public class EndLVLController : MonoBehaviour
     }
 
     private void Start()
-    {
-        // esconde painel de pause e botao de proxima fase
+    {   // esconde painel de pause e botao de proxima fase
         panel.SetActive(false);
         btnNext.SetActive(false);
     }
 
     void Update()
     {
+        txtEnd.text = TaskController.taskTxt.text; // mostra a task atual
+
         // checa se a task foi completada
         if (_deliveryController.contEntregue >= _taskController.minEntregas)
         {
             this.taskCompleted = true;
-            txtEnd.fontStyle = FontStyles.Strikethrough;
+            txtEnd.fontStyle = FontStyles.Strikethrough; // marca o texto
         }
-        
-        txtEnd.text = TaskController.taskTxt.text; // mostra a task atual
-        
-        
     }
 
-    public bool EndScreen(int x, bool b) 
+    public bool EndScreen(int x, bool b) // tela de pause/endgame
     {
-        Time.timeScale = x; // pausa
-        panel.SetActive(b);
+        Time.timeScale = x; // pausa/despausa
+        panel.SetActive(b); // mostra/esconde painel
+        if (this.taskCompleted && end) // se completou task e chegou no fim da fase
+        {   
+            AudioUpdate(7); // toca audio de vitoria
+            btnNext.SetActive(true); // mostra btn de proxima fase
+        }
+        // se chegou ao fim mas nao completou fase
+        else if (!this.taskCompleted && end) { AudioUpdate(3); } // toca som de derrota
+        return true; // retorna funcao
+    }
 
-        if (this.taskCompleted == true && end == true) // se passou de fase, mostra botao de proxima fase
-        {
-            btnNext.SetActive(true);
-            player.audioSource.clip = soundManager.som[7];
-            player.audioSource.Play();
-            // if (SceneManager.GetActiveScene().name.ToString() == "Fase1")
-            // {
-            //     PlayerPrefs.SetString("fase1", "passou");
-            // }
-        }
-        else if (this.taskCompleted == false && end == true)
-        {
-            player.audioSource.clip = soundManager.som[3];
-            player.audioSource.Play();
-        }
-        
-        return true;
+    void AudioUpdate(int audio) // atualiza audio
+    {
+        player.GetComponent<PlayerController>().audioSource.clip = soundManager.som[audio];
+        player.GetComponent<PlayerController>().audioSource.Play();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            end = true;
+        if (other.gameObject.tag == "Player") // se player colidiu com fim da fase
+        {   // chegou ao fim
+            end = true; 
             EndScreen(0, true);
         }
     }

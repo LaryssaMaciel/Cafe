@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class ParallaxController : MonoBehaviour
 {
-    private float length, startpos, startpos_;
-    public float parallaxEffect, parallaxEffectY; 
-    public GameObject cam;
-
-    // public float speed = 5f;
+    private float length, startpos, startpos_; // tamanho, posicao x inicial e posicao y inicial da imagem
+    public float parallaxEffect, parallaxEffectY; // efeito parallax no x e no y
+    public GameObject cam; // camera
     
     void Start()
-    {
+    {   // configura variaveis
         cam = GameObject.FindWithTag("cmCam"); //CM vcam1
-        startpos = transform.position.x; // posicao inicial
-        startpos_ = transform.position.y; // posicao inicial
+        startpos = transform.position.x; // posicao inicial x
+        startpos_ = transform.position.y; // posicao inicial y
         length = GetComponent<SpriteRenderer>().bounds.size.x; // tamanho desse sprite
     }
 
@@ -26,10 +24,8 @@ public class ParallaxController : MonoBehaviour
 
         transform.position = new Vector3(startpos + dist, startpos_ + dist_, transform.position.z); // move bg
 
-        // reposiciona sprites
+        // reposiciona sprites (infinito)
         if (temp > startpos + length) { startpos += length; }
         else if (temp < startpos - length) { startpos -= length; }
-
-        // cam.transform.Translate(Vector3.right * Time.deltaTime * speed); // move camera automatico
     }
 }

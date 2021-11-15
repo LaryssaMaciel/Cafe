@@ -7,10 +7,7 @@ public class AutomaticCam : MonoBehaviour
     private PlayerController pc; // acessa variavel
     public float speed; // velocidade de movimento da camera
     
-    void Start()
-    {
-        pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>(); // acessa script
-    }
+    void Start() => pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>(); // acessa script
 
     void Update()
     {
