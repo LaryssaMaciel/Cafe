@@ -68,6 +68,12 @@ public class BtnManager : MonoBehaviour
     
     // ### Funções pra gameplay
 
+    public PlayerController player;
+    public void Unpause()
+    {
+        player.pause = !player.pause;
+    }
+
     public GameObject goBTNs; // botoes no pause
     public void Back_Pause() // esconde configuracoes e mostra opcoes
     {

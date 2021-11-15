@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
     }
     
     bool carStop = false;
-    void Pause() // metodo de pause
+    public void Pause() // metodo de pause
     {
         if (Input.GetButtonDown("Pause")) { pause = !pause; }
         

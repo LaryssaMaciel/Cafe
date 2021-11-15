@@ -38,10 +38,10 @@ public class SoundManager : MonoBehaviour
         // pega valores salvos das configuracoes de audio
         musVol = PlayerPrefs.GetFloat("musicaVol");
         SetMusVolume(musVol);
-        sliMus.value = musVol;
+        if (sliMus != null) { sliMus.value = musVol; }
         gameVol = PlayerPrefs.GetFloat("gameVol");
         SetGamVolume(gameVol);
-        sliGam.value = gameVol;
+        if (sliGam != null) {sliGam.value = gameVol; }
     }
 
     public void SetMusVolume(float vol) // define e salva configuracoes do volume da musica principal

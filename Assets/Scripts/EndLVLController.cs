@@ -16,7 +16,7 @@ public class EndLVLController : MonoBehaviour
     
     public TMP_Text txtEnd; // texto da task na UI/Pause/Endgame
     public bool taskCompleted = false; // se a tarefa foi completa
-    public GameObject panel, btnNext; // painel de pause, botao de proxima fase
+    public GameObject panel, btnNext, btnResume; // painel de pause, botao de proxima fase
     public bool end = false; // se chegou no fim da fase
     private SoundManager soundManager; // audio
 
@@ -28,6 +28,7 @@ public class EndLVLController : MonoBehaviour
         txtEnd = GameObject.FindWithTag("txtTask").GetComponent<TMP_Text>();
         panel = GameObject.Find("Panel");
         btnNext = GameObject.Find("btnNext");
+        btnResume = GameObject.Find("btnResume");
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         // passou1 = PlayerPrefs.GetString("fase1");
@@ -59,6 +60,7 @@ public class EndLVLController : MonoBehaviour
         {   
             AudioUpdate(7); // toca audio de vitoria
             btnNext.SetActive(true); // mostra btn de proxima fase
+            btnResume.SetActive(false); // esconde btn resume
         }
         // se chegou ao fim mas nao completou fase
         else if (!this.taskCompleted && end) { AudioUpdate(3); } // toca som de derrota
