@@ -9,6 +9,8 @@ public class DogsController : MonoBehaviour
     public float speed; // velocidade dos dogs
     private float jumpCounter, jumpTime = .2f, jumpForce; // contador, tempo max e forca do pulo
     private AudioSource audioSource; // audio dos dogs
+    public GameObject dogsFollow;
+    public bool jumping;
 
     // auxiliares
     private EndLVLController endLVL;
@@ -20,6 +22,7 @@ public class DogsController : MonoBehaviour
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>(); // acessa o player
         rb = GetComponent<Rigidbody2D>(); // acessa rigdbody
         audioSource = GetComponent<AudioSource>(); // acessa audio
+        dogsFollow = GameObject.Find("DogsFollow");
         // acessa scripts
         endLVL = GameObject.FindWithTag("end").GetComponent<EndLVLController>();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
@@ -36,7 +39,13 @@ public class DogsController : MonoBehaviour
         else if (!player.pause) { this.audioSource.UnPause(); }
     }
 
-    void Movement() => this.transform.Translate(Vector3.right * Time.deltaTime * speed); // move automatico
+    void Movement() 
+    {
+        // ponto x dos dogs, fixo, move automatico
+        if (this.gameObject.name == "DogsFollow") { this.transform.Translate(Vector3.right * Time.deltaTime * speed); } 
+        // dogs ficam fixo no ponto x
+        if (this.gameObject.name == "Dogs") { this.transform.position = new Vector2(dogsFollow.transform.position.x, this.transform.position.y); }
+    }
     
     void DogsNaCam() // manter player na visao da camera
     {
