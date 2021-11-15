@@ -19,6 +19,7 @@ public class BtnManager : MonoBehaviour
         goFases.SetActive(true);
         goSettings.SetActive(false);
         goCredits.SetActive(false);
+        goTutorial.SetActive(false);
     }
     public void Back_Menu() // ao clicar em voltar, esconde as fases e mostra botoes do menu inicial
     {
@@ -26,6 +27,7 @@ public class BtnManager : MonoBehaviour
         goFases.SetActive(false);
         goSettings.SetActive(false);
         goCredits.SetActive(false);
+        goTutorial.SetActive(false);
     }
 
     public GameObject goSettings; // configurações
@@ -35,6 +37,7 @@ public class BtnManager : MonoBehaviour
         goMenu.SetActive(false);
         goFases.SetActive(false);
         goCredits.SetActive(false);
+        goTutorial.SetActive(false);
     }
 
     // Fases
@@ -48,6 +51,17 @@ public class BtnManager : MonoBehaviour
         goMenu.SetActive(false);
         goSettings.SetActive(false);
         goFases.SetActive(false);
+        goTutorial.SetActive(false);
+    }
+
+    public GameObject goTutorial; // botao de tutorial
+    public void ShowTutorial() // mostra tutorial
+    {
+        goCredits.SetActive(false);
+        goMenu.SetActive(false);
+        goSettings.SetActive(false);
+        goFases.SetActive(false);
+        goTutorial.SetActive(true);
     }
 
     public void Sair() => Application.Quit(); // sai do jogo
