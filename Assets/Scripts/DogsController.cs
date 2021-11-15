@@ -29,6 +29,7 @@ public class DogsController : MonoBehaviour
     {
         speed = pc.speed; // atualiza velocidade de acordo com a do player
         Movement(); // chama metodo de movimentacao
+        DogsNaCam(); // mantem dogs na area da camera
 
         // gerencia audio
         if (endLVL.end || player.pause) { this.audioSource.Pause(); }
@@ -37,6 +38,14 @@ public class DogsController : MonoBehaviour
 
     void Movement() => this.transform.Translate(Vector3.right * Time.deltaTime * speed); // move automatico
     
+    void DogsNaCam() // manter player na visao da camera
+    {
+        Vector3 pos = Camera.main.WorldToViewportPoint (transform.position);         
+        pos.x = Mathf.Clamp01(pos.x);         
+        pos.y = Mathf.Clamp01(pos.y);         
+        transform.position = Camera.main.ViewportToWorldPoint(pos);
+    }
+
     Collider2D col_; // objeto que colidiu com dogs
     void OnTriggerEnter2D(Collider2D col)
     {
