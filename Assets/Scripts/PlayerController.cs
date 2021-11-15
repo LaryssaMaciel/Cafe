@@ -254,6 +254,7 @@ public class PlayerController : MonoBehaviour
                 case "obstacle": 
                 case "car":
                     vidas--; // perde vida
+                    this.rb.AddForce(-this.transform.right * 150, ForceMode2D.Impulse);
                     invencivel = true; // invencibilidade breve
                     invTime = 1.3f; // tempo de invencibilidade
                     invCounter = invTime; // começa contador

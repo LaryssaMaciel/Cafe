@@ -8,7 +8,7 @@ public class DogsController : MonoBehaviour
     private Rigidbody2D rb;
     public float speed; // velocidade dos dogs
     private float jumpCounter, jumpTime = .2f, jumpForce; // contador, tempo max e forca do pulo
-    private AudioSource audioSource; // audio dos dogs
+    public AudioSource audioSource; // audio dos dogs
     public GameObject dogsFollow;
     public bool jumping;
 
@@ -21,7 +21,7 @@ public class DogsController : MonoBehaviour
     {
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>(); // acessa o player
         rb = GetComponent<Rigidbody2D>(); // acessa rigdbody
-        audioSource = GetComponent<AudioSource>(); // acessa audio
+        //audioSource = GetComponent<AudioSource>(); // acessa audio
         dogsFollow = GameObject.Find("DogsFollow");
         // acessa scripts
         endLVL = GameObject.FindWithTag("end").GetComponent<EndLVLController>();
