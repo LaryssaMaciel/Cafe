@@ -11,6 +11,20 @@ public class BtnManager : MonoBehaviour
     public void Som() => audioSource.Play(); // toca som do botao
 
     // ### Funções pro MENU
+    
+    float x = 1.2165f;
+    public void SelectBtn(GameObject a) 
+    { 
+        if (a.gameObject.tag == "btnUI") { x = 2.2f; }
+        else { x = 1.2165f; }
+        a.gameObject.transform.localScale = new Vector3(x,x,x); 
+    }
+    public void UnselectBtn(GameObject a) 
+    { 
+        if (a.gameObject.tag == "btnUI") { x = 1.84275f; }
+        else { x = 1; }
+        a.gameObject.transform.localScale = new Vector3(x,x,x);
+    }
 
     public GameObject goMenu, goFases; // botao 'menu' e fases
     public void Start_Game() // ao clicar em start game, mostra as fases disponiveis e esconde botoes do menu inicial

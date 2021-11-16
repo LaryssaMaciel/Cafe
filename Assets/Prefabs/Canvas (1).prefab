@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 7959223823661388787}
   m_Layer: 5
   m_Name: SettingsBTN
-  m_TagString: Untagged
+  m_TagString: btnUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -296,7 +296,7 @@ RectTransform:
   m_GameObject: {fileID: 4881297962871112199}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7236, y: 1.7236, z: 1.7236}
+  m_LocalScale: {x: 1.84275, y: 1.84275, z: 1.84275}
   m_Children:
   - {fileID: 7123689922992381918}
   m_Father: {fileID: 7306541277354601480}
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b46d3ad89bb46ba498e5c20e8366c43e, type: 3}
+  m_Sprite: {fileID: 4771789244991086169, guid: b46d3ad89bb46ba498e5c20e8366c43e, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -425,6 +425,34 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 7306541276496390944}
+          m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
+          m_MethodName: SelectBtn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 4881297962871112199}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7306541276496390944}
+          m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
+          m_MethodName: UnselectBtn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 4881297962871112199}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -520,7 +548,7 @@ GameObject:
   - component: {fileID: 3063643768828535032}
   m_Layer: 5
   m_Name: btnResume
-  m_TagString: Untagged
+  m_TagString: btnUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534,7 +562,7 @@ RectTransform:
   m_GameObject: {fileID: 5734349055147457763}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.621742, y: 1.621742, z: 1.621742}
+  m_LocalScale: {x: 1.84275, y: 1.84275, z: 1.84275}
   m_Children:
   - {fileID: 7503233735480598600}
   m_Father: {fileID: 7306541276496390946}
@@ -573,7 +601,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: df13f00c8f378a4429053184592c492c, type: 3}
+  m_Sprite: {fileID: -6450244300066960991, guid: df13f00c8f378a4429053184592c492c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -668,6 +696,34 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 7306541276496390944}
+          m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
+          m_MethodName: SelectBtn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 5734349055147457763}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7306541276496390944}
+          m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
+          m_MethodName: UnselectBtn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 5734349055147457763}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7306541275262939105
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,7 +778,7 @@ GameObject:
   - component: {fileID: 6202414173162082732}
   m_Layer: 5
   m_Name: btnReiniciar
-  m_TagString: Untagged
+  m_TagString: btnUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -736,7 +792,7 @@ RectTransform:
   m_GameObject: {fileID: 7306541275797292785}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.758072, y: 1.758072, z: 1.758072}
+  m_LocalScale: {x: 1.84275, y: 1.84275, z: 1.84275}
   m_Children:
   - {fileID: 7306541276219947620}
   m_Father: {fileID: 7306541276496390946}
@@ -775,7 +831,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 77013ea818f79ba4fb3aa0e8821040e9, type: 3}
+  m_Sprite: {fileID: 6978098356892758718, guid: 77013ea818f79ba4fb3aa0e8821040e9, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -870,6 +926,34 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 7306541276496390944}
+          m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
+          m_MethodName: SelectBtn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 7306541275797292785}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7306541276496390944}
+          m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
+          m_MethodName: UnselectBtn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 7306541275797292785}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7306541275836602215
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,7 +969,7 @@ GameObject:
   - component: {fileID: 1037078104198367823}
   m_Layer: 5
   m_Name: btnMenu
-  m_TagString: Untagged
+  m_TagString: btnUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -899,7 +983,7 @@ RectTransform:
   m_GameObject: {fileID: 7306541275836602215}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9246114, y: 1.9246114, z: 1.9246114}
+  m_LocalScale: {x: 1.84275, y: 1.84275, z: 1.84275}
   m_Children:
   - {fileID: 7306541276765536788}
   m_Father: {fileID: 7306541276496390946}
@@ -938,7 +1022,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b7423d5c9241ef649988b48b31779f24, type: 3}
+  m_Sprite: {fileID: 7635013726552783190, guid: b7423d5c9241ef649988b48b31779f24, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1028,6 +1112,34 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 7306541276496390944}
+          m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
+          m_MethodName: SelectBtn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 7306541275836602215}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7306541276496390944}
+          m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
+          m_MethodName: UnselectBtn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 7306541275836602215}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -1655,7 +1767,7 @@ MonoBehaviour:
   m_StartCorner: 2
   m_StartAxis: 0
   m_CellSize: {x: 30, y: 36.5}
-  m_Spacing: {x: 20, y: 0}
+  m_Spacing: {x: 30, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
 --- !u!82 &5257025122910079069
@@ -2053,7 +2165,7 @@ GameObject:
   - component: {fileID: 4695973505823251013}
   m_Layer: 5
   m_Name: btnNext
-  m_TagString: Untagged
+  m_TagString: btnUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2067,7 +2179,7 @@ RectTransform:
   m_GameObject: {fileID: 7306541276935270324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.8442521, y: 1.8442521, z: 1.8442521}
+  m_LocalScale: {x: 1.84275, y: 1.84275, z: 1.84275}
   m_Children:
   - {fileID: 7306541277178537243}
   m_Father: {fileID: 7306541276496390946}
@@ -2106,7 +2218,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e2a0657f35da4884f931214ac65d12f3, type: 3}
+  m_Sprite: {fileID: -2204288037410259486, guid: e2a0657f35da4884f931214ac65d12f3, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2196,6 +2308,34 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 7306541276496390944}
+          m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
+          m_MethodName: SelectBtn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 7306541276935270324}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7306541276496390944}
+          m_TargetAssemblyTypeName: BtnManager, Assembly-CSharp
+          m_MethodName: UnselectBtn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 7306541276935270324}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -3036,12 +3176,84 @@ PrefabInstance:
       value: Back_Pause
       objectReference: {fileID: 0}
     - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].eventID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7306541276496390944}
     - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 7306541276496390944}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7306541276496390944}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Som
+      objectReference: {fileID: 0}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SelectBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnselectBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: BtnManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BtnManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8406139991286674337}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8406139991286674337}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 656230342021942297, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 656230342021942302, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3148,6 +3360,11 @@ PrefabInstance:
 --- !u!224 &7933395057319097746 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1417201260671388204, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
+  m_PrefabInstance: {fileID: 9057862329191235518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8406139991286674337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 656230342021942303, guid: 59114c9545e605142bdc74f8a885e86e, type: 3}
   m_PrefabInstance: {fileID: 9057862329191235518}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7713930269035000505 stripped

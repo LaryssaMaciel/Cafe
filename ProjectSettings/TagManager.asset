@@ -25,6 +25,7 @@ TagManager:
   - platf
   - playPlat
   - playCol
+  - btnUI
   layers:
   - Default
   - TransparentFX
