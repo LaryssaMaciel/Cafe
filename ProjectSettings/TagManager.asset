@@ -22,6 +22,9 @@ TagManager:
   - powerup
   - car
   - obstacleDog
+  - platf
+  - playPlat
+  - playCol
   layers:
   - Default
   - TransparentFX

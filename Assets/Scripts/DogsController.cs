@@ -21,7 +21,7 @@ public class DogsController : MonoBehaviour
     {
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>(); // acessa o player
         rb = GetComponent<Rigidbody2D>(); // acessa rigdbody
-        //audioSource = GetComponent<AudioSource>(); // acessa audio
+        if (this.gameObject.name == "Dogs") { audioSource = GetComponent<AudioSource>(); } // acessa audio
         dogsFollow = GameObject.Find("DogsFollow");
         // acessa scripts
         endLVL = GameObject.FindWithTag("end").GetComponent<EndLVLController>();
@@ -35,8 +35,10 @@ public class DogsController : MonoBehaviour
         DogsNaCam(); // mantem dogs na area da camera
 
         // gerencia audio
-        if (endLVL.end || player.pause) { this.audioSource.Pause(); }
-        else if (!player.pause) { this.audioSource.UnPause(); }
+        if (this.gameObject.name == "Dogs") {
+            if (endLVL.end || player.pause) { this.audioSource.Pause(); }
+            else if (!player.pause) { this.audioSource.UnPause(); }
+        }
     }
 
     void Movement() 

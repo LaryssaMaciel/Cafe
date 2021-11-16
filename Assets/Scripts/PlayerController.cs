@@ -203,7 +203,7 @@ public class PlayerController : MonoBehaviour
             endlvl.EndScreen(0, true); // pause
             // pausa audios
             motoAudio.Pause();
-            if (carro.visible) {
+            if (carro.visible && carro != null) {
                 carro.audioSource.Pause();
                 carStop = true;
             }
@@ -213,7 +213,7 @@ public class PlayerController : MonoBehaviour
             endlvl.EndScreen(1, false); // resume
             // despausa audios
             motoAudio.UnPause();
-            if (carro.visible && carStop) {
+            if (carro.visible && carStop && carro != null) {
                 carro.audioSource.UnPause();
                 carStop = false;
             }
@@ -222,7 +222,7 @@ public class PlayerController : MonoBehaviour
         if (endlvl.end)
         {
             motoAudio.Pause();
-            carro.audioSource.Pause();
+            if (carro != null) {carro.audioSource.Pause(); }
         }
     }
     
