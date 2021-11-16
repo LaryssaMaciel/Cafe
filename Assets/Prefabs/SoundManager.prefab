@@ -54,11 +54,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d58bb1bbcbeb99145a3ed723c7495943, type: 3}
   - {fileID: 8300000, guid: ee0f6b54c52ef3849819547373f82da3, type: 3}
   - {fileID: 8300000, guid: 106a1ecdff3544f45a583b8a2edd33df, type: 3}
+  musicasCena:
+  - {fileID: 8300000, guid: f7e8b3777e09f594f83b8185d333a148, type: 3}
+  - {fileID: 8300000, guid: b7a90c9641628f04dbec8939c4b6bc93, type: 3}
+  - {fileID: 8300000, guid: 0ac01e906323867408fd8229341fd165, type: 3}
+  - {fileID: 8300000, guid: 1ce70266b4dfb2a48957a4d3c60ad898, type: 3}
   audioSource: {fileID: 0}
-  musica: []
-  sons: []
-  musicaVal: 0.5
-  sonsVal: 0.5
+  MusMixer: {fileID: 0}
+  GamMixer: {fileID: 0}
+  sliMus: {fileID: 0}
+  sliGam: {fileID: 0}
 --- !u!82 &1364177128385606419
 AudioSource:
   m_ObjectHideFlags: 0

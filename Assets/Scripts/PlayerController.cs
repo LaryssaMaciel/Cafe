@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("MOVIMENTACAO")]
     public float speed = 0f; // velocidade do player
-    public float velNormal = 5f;
+    public float velNormal = 10f;
     private Vector3 autoDir; // direcao da movimentacao automatica 
 
     [Header("PAUSE/ENDLVL")]

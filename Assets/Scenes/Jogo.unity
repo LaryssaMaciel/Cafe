@@ -543,6 +543,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 77aaa989fb436984f88203f41e3010c9, type: 3}
   - {fileID: 21300000, guid: 7662955175de7594d82ecba6748cb9fb, type: 3}
   sp: []
+  soundManager: {fileID: 0}
 --- !u!1 &231648385
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,6 +3099,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3234142457426109368, guid: eb0f682a684a78c4d877334b326471b2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 66.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3402774706402400837, guid: eb0f682a684a78c4d877334b326471b2, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -3146,6 +3151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MudaCenario1
       objectReference: {fileID: 0}
+    - target: {fileID: 3402774706402400843, guid: eb0f682a684a78c4d877334b326471b2, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1800303614}
     - target: {fileID: 3402774706402400843, guid: eb0f682a684a78c4d877334b326471b2, type: 3}
       propertyPath: sp.Array.data[0]
       value: 
@@ -4235,11 +4244,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8895208600934881284, guid: cb00b1cd43b40a044adef8ac56ed2a13, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.42
+      value: -16.81
       objectReference: {fileID: 0}
     - target: {fileID: 8895208600934881284, guid: cb00b1cd43b40a044adef8ac56ed2a13, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.859362
+      value: -4.89
       objectReference: {fileID: 0}
     - target: {fileID: 8895208600934881284, guid: cb00b1cd43b40a044adef8ac56ed2a13, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4834,6 +4843,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 77aaa989fb436984f88203f41e3010c9, type: 3}
   - {fileID: 21300000, guid: 7662955175de7594d82ecba6748cb9fb, type: 3}
   sp: []
+  soundManager: {fileID: 0}
 --- !u!4 &1715613814 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6404991430622660611, guid: 795eaec4c780908488d445df65347f2b, type: 3}
@@ -5320,6 +5330,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &1955265392 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1364177128385606419, guid: 5d99041052ba7b249a5e8707d178b13d, type: 3}
+  m_PrefabInstance: {fileID: 1364177127461942028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1984062662
 GameObject:
   m_ObjectHideFlags: 0
@@ -5737,6 +5752,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 77aaa989fb436984f88203f41e3010c9, type: 3}
   - {fileID: 21300000, guid: 7662955175de7594d82ecba6748cb9fb, type: 3}
   sp: []
+  soundManager: {fileID: 0}
 --- !u!1 &2122842744
 GameObject:
   m_ObjectHideFlags: 0
@@ -5999,6 +6015,10 @@ PrefabInstance:
       propertyPath: audioMixer
       value: 
       objectReference: {fileID: 24100000, guid: 7d56c74087e022744bd5fa712a6e5a1a, type: 2}
+    - target: {fileID: 1364177128385606444, guid: 5d99041052ba7b249a5e8707d178b13d, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1955265392}
     - target: {fileID: 1364177128385606445, guid: 5d99041052ba7b249a5e8707d178b13d, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -6228,6 +6248,10 @@ PrefabInstance:
       value: MudaCenario
       objectReference: {fileID: 0}
     - target: {fileID: 3402774706402400843, guid: eb0f682a684a78c4d877334b326471b2, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1800303614}
+    - target: {fileID: 3402774706402400843, guid: eb0f682a684a78c4d877334b326471b2, type: 3}
       propertyPath: sp.Array.data[0]
       value: 
       objectReference: {fileID: 1660952249}
@@ -6356,6 +6380,10 @@ PrefabInstance:
     - target: {fileID: 3975784680357129013, guid: f808e5c20d3e7a34dbc4596e43888096, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3975784680357129014, guid: f808e5c20d3e7a34dbc4596e43888096, type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f808e5c20d3e7a34dbc4596e43888096, type: 3}

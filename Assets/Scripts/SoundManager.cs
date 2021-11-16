@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
 {
     [Header("Todos os sons")]
     public AudioClip[] som; // sons
+    public AudioClip[] musicasCena;
     public AudioSource audioSource; // audio
 
     [Header("Mixers")]
@@ -28,11 +29,11 @@ public class SoundManager : MonoBehaviour
         switch (sceneName)
         {   // define musica principal da cena
             case "Menu":
-                AudioManager(5); // som de menu
+                AudioManager(3); // som de menu
                 break;
             case "Jogo":
             case "Jogo1":
-                AudioManager(5); // som de gameplay
+                //AudioManager(0); // som de gameplay
                 break;
         }
         // pega valores salvos das configuracoes de audio
@@ -56,9 +57,9 @@ public class SoundManager : MonoBehaviour
         PlayerPrefs.SetFloat("gameVol", vol);
     }
 
-    void AudioManager(int audio)
+    public void AudioManager(int audio)
     {
-        audioSource.clip = som[audio];
+        audioSource.clip = musicasCena[audio];
         audioSource.Play();
     }
 }

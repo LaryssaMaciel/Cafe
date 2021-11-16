@@ -288,7 +288,7 @@ MonoBehaviour:
   jumpForce: 10
   isJumping: 0
   speed: 20
-  velNormal: 5
+  velNormal: 10
   panel: {fileID: 0}
   gameOver: 0
   pause: 0
