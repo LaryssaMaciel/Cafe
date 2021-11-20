@@ -63,3 +63,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: player
+    uniqueID: 1403856933
+    locked: 0
+  - name: buraco
+    uniqueID: 2102612465
+    locked: 0

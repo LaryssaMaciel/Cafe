@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     [Header("PULO")]
     // tempo maximo de pulo, tempo atual de pulo, forca do pulo 
     public float jumpTime = .4f;
-    public float jumpCounter;
+    public float jumpCounter = 0;
     public float jumpForce = 10f;
     public bool isJumping; // se ta pulando
 
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     private EndLVLController endlvl; // acessa o endlvl
     public bool pause = false; // se ta pausado
     
-    void Start()
+    void Awake()
     {
         // configurando variaveis
         gameOver = false;
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
         Manobra();
         PlayerNaCam();    
 
-        if (entrega == true) // animacao de entrega
+        if (entrega && !isJumping) // animacao de entrega
         {
             animState = 4;
             StartCoroutine("wait", 1f);
@@ -202,7 +202,7 @@ public class PlayerController : MonoBehaviour
         {
             endlvl.EndScreen(0, true); // pause
             // pausa audios
-            motoAudio.Pause();
+            motoAudio.Stop();
             if (carro.visible && carro != null) {
                 carro.audioSource.Pause();
                 carStop = true;
@@ -221,8 +221,8 @@ public class PlayerController : MonoBehaviour
 
         if (endlvl.end)
         {
-            motoAudio.Pause();
-            if (carro != null) {carro.audioSource.Pause(); }
+            motoAudio.Stop();
+            if (carro != null) {carro.audioSource.Stop(); }
         }
     }
     
@@ -298,11 +298,11 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-    
+    float zz = 1f;
     void Jump () // metodo de pulo
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, platformLayer); // checa se ta no chao
-        
+
         if (isGrounded && Input.GetButtonDown("Jump") && !manobra) // se ta no chao, apertou pra pular e nao fez manobra
         {   // pode pular
             isJumping = true;
@@ -330,6 +330,8 @@ public class PlayerController : MonoBehaviour
             {   // dogs vao ate player
                 dogs.transform.position = Vector3.MoveTowards(dogs.transform.position, this.transform.position, 10 * Time.deltaTime);
             } else { dogsCol = true; } // se chegou no player, colidiu
+            
+            if (!endlvl.taskCompleted && endlvl.end || gameOver) { AudioManager(3); } // toca som de derrota   
         }
 
         if (dogsCol) // se colidiu com dogs

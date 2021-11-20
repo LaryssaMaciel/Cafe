@@ -11,6 +11,12 @@ TextureImporter:
   - first:
       213: 7845034599331788599
     second: asset estrada_2
+  - first:
+      213: -3293867088254104004
+    second: asset estrada_3
+  - first:
+      213: 2489224723627781241
+    second: asset estrada_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -170,6 +176,48 @@ TextureImporter:
       bones: []
       spriteID: 737f1df37692fdc60800000000000000
       internalID: 7845034599331788599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: asset estrada_3
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 603
+        width: 722
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3e834bb555d942d0800000000000000
+      internalID: -3293867088254104004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: asset estrada_4
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 603
+        width: 719
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97c24f992b08b8220800000000000000
+      internalID: 2489224723627781241
       vertices: []
       indices: 
       edges: []
