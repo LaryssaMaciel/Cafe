@@ -2080,9 +2080,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Arte\nJulio Cesar, Laryssa Felix, Nicolas Fernandes\n\nGame Design\nLaryssa
-    Felix, Nicolas Fernandes\n\nPrograma\xE7\xE3o\nLaryssa Felix\n\nSons\nFreesound,
-    Mundo em Bits, Pixabay, Mixkit"
+  m_text: "Arte adicional\nJulio Cesar\n\nPrograma\xE7\xE3o, Game Design, Arte e
+    Anima\xE7\xE3o adicional\nLaryssa Felix\n\nArte, Anima\xE7\xE3o e Game Design\nNicolas
+    Fernandes\n\nSons\nFreesound, Mundo em Bits, Mixkit, Pixabay"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

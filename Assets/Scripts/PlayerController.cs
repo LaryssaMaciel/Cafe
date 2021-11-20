@@ -34,7 +34,8 @@ public class PlayerController : MonoBehaviour
     public int cena = 0; // cena q muda no fundo
 
     [Header("VIDAS")]
-    public float vidas = 3; // vidas totais
+    public float vidas = 8; // vidas atuais
+    public static float vidastotais = 8; // vidas totais
     private bool invencivel = false; // dano/powerup
     private float invTime = 1.3f; // tempo max de invencibilidade
     private float invCounter = 0; // tempo atual invencibilidade
@@ -81,14 +82,20 @@ public class PlayerController : MonoBehaviour
         motoAudio = GameObject.Find("FeetPos").GetComponent<AudioSource>();
         carro = GameObject.FindWithTag("car").GetComponent<CarroController>();
         camSpeed = GameObject.Find("AutoCam").GetComponent<AutomaticCam>();
+        vidas = vidastotais;
     }
-
+    bool playLost = false;
     void Update()
     {   // chama metodos
         if (!gameOver)
         {
             Movement();
             Jump();
+        }
+        else if (!playLost && gameOver)
+        {
+            AudioManager(3); // musica game over
+            playLost = true;
         }
         Pause();
         EndScreen();
@@ -148,7 +155,7 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
         }
 
-        lifebar.fillAmount = vidas / 3; // life bar
+        lifebar.fillAmount = vidas / vidastotais; // life bar
     }
 
     float blinkTime = .10f, blinkCounter = 0; // timers pra piscar o player
@@ -269,7 +276,7 @@ public class PlayerController : MonoBehaviour
         switch (col.gameObject.tag)
         {   // gameover, se colidiu com
             case "limbo":
-                AudioManager(3); // som de derrota
+                //AudioManager(3); // som de derrota
                 gameOver = true;
                 endlvl.end = true;
                 dogsCol = true;
@@ -290,8 +297,8 @@ public class PlayerController : MonoBehaviour
                 // super velocidade
                 else if (col.gameObject.GetComponent<PowerUpManager>().tipo == "vel")
                 {
-                    speed = speed * 2;
-                    camSpeed.speed = camSpeed.speed * 2;
+                    speed = speed * 1.8f;
+                    camSpeed.speed = camSpeed.speed * 1.8f;
                     superSpeed = true;
                     speTime = 2f;
                     pm.multiplicador = 2;
@@ -335,7 +342,7 @@ public class PlayerController : MonoBehaviour
                 dogs.transform.position = Vector3.MoveTowards(dogs.transform.position, this.transform.position, 10 * Time.deltaTime);
             } else { dogsCol = true; } // se chegou no player, colidiu
             
-            if (!endlvl.taskCompleted && endlvl.end || gameOver) { AudioManager(3); } // toca som de derrota   
+            if (!endlvl.taskCompleted && endlvl.end) { AudioManager(3); } //|| gameOver toca som de derrota   
         }
 
         if (dogsCol) // se colidiu com dogs

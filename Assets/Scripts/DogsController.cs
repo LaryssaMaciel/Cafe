@@ -32,12 +32,13 @@ public class DogsController : MonoBehaviour
     {
         speed = pc.speed; // atualiza velocidade de acordo com a do player
         Movement(); // chama metodo de movimentacao
-        DogsNaCam(); // mantem dogs na area da camera
+        
 
         // gerencia audio
         if (this.gameObject.name == "Dogs") {
             if (endLVL.end || player.pause) { this.audioSource.Pause(); }
             else if (!player.pause) { this.audioSource.UnPause(); }
+            DogsNaCam(); // mantem dogs na area da camera
         }
     }
 

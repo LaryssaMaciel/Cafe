@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  go2X: {fileID: 0}
   dogs: {fileID: 0}
   dogsCol: 0
   animState: 0
@@ -276,7 +277,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   motoAudio: {fileID: 0}
   cena: 0
-  vidas: 3
+  vidas: 8
   lifebar: {fileID: 0}
   platformLayer:
     serializedVersion: 2
