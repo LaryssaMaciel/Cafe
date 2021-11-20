@@ -72,15 +72,15 @@ public class DogsController : MonoBehaviour
                 Destroy(col_.gameObject, 1);
                 break;
             // PULA OBSTACULO
-            case "buraco":
-                jumpForce = 7;
-                jumpCounter = jumpTime;
-                if (jumpCounter > 0)
-                {
-                    rb.velocity = jumpForce * Vector2.up;
-                    jumpCounter -= Time.deltaTime;
-                }
-                break;
+            // case "buraco":
+            //     jumpForce = 7;
+            //     jumpCounter = jumpTime;
+            //     if (jumpCounter > 0)
+            //     {
+            //         rb.velocity = jumpForce * Vector2.up;
+            //         jumpCounter -= Time.deltaTime;
+            //     }
+            //     break;
         }
     }
 }

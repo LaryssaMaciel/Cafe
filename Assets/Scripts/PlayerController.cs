@@ -253,6 +253,7 @@ public class PlayerController : MonoBehaviour
                 case "dogs": 
                 case "obstacle": 
                 case "car":
+                case "buraco":
                     vidas--; // perde vida
                     this.rb.AddForce(-this.transform.right * 150, ForceMode2D.Impulse);
                     invencivel = true; // invencibilidade breve
