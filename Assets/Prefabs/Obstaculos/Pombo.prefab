@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3906631608720784868}
   - component: {fileID: 8716495944117859428}
   - component: {fileID: 1533285648053978722}
+  - component: {fileID: 7147689555897473027}
   m_Layer: 0
   m_Name: Pombo
   m_TagString: obstacle
@@ -91,7 +92,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 21300000, guid: 146723874c0d4f348b20fbfb06ba06fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 10460dd31fea6004ea21a80b4428a2b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,7 +120,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 15.47}
+    oldSize: {x: 25.006105, y: 20}
     newSize: {x: 2.31, y: 0.83}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -162,18 +163,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.49803686, y: 0.0016102791}
+  m_Offset: {x: -0.49803686, y: -3.1769202}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 15.47}
+    oldSize: {x: 25.006105, y: 20}
     newSize: {x: 2.31, y: 0.83}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15.280192, y: 9.872783}
+  m_Size: {x: 15.280192, y: 8.524317}
   m_EdgeRadius: 0
 --- !u!82 &1533285648053978722
 AudioSource:
@@ -271,6 +272,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &7147689555897473027
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3906631608720784891}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d03a31c7211974b4f852c3710f315b53, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7562474940949384550
 PrefabInstance:
   m_ObjectHideFlags: 0
