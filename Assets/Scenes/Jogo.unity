@@ -1034,6 +1034,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8514941684387360604, guid: 4149fd4b20ce31444b1c0fc5bc37a1e6, type: 3}
   m_PrefabInstance: {fileID: 1997660932}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &218692603 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4651048210776895495, guid: cea08be4009270d48a55235b932785ff, type: 3}
+  m_PrefabInstance: {fileID: 634606391}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &219758383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,6 +1310,10 @@ PrefabInstance:
       propertyPath: dogs
       value: 
       objectReference: {fileID: 1889258378}
+    - target: {fileID: 8609760576677782235, guid: 49449160e585eb64eaf5eba1366c8417, type: 3}
+      propertyPath: go2X
+      value: 
+      objectReference: {fileID: 218692603}
     - target: {fileID: 8609760576677782235, guid: 49449160e585eb64eaf5eba1366c8417, type: 3}
       propertyPath: panel
       value: 
@@ -2961,6 +2970,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4651048210776895495, guid: cea08be4009270d48a55235b932785ff, type: 3}
+      propertyPath: m_Name
+      value: 2XPower
+      objectReference: {fileID: 0}
     - target: {fileID: 4881297962871112199, guid: cea08be4009270d48a55235b932785ff, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2988,6 +3001,10 @@ PrefabInstance:
     - target: {fileID: 6329651741618705395, guid: cea08be4009270d48a55235b932785ff, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6712952203149971038, guid: cea08be4009270d48a55235b932785ff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.5770874
       objectReference: {fileID: 0}
     - target: {fileID: 7306541275797292798, guid: cea08be4009270d48a55235b932785ff, type: 3}
       propertyPath: m_AnchorMax.y

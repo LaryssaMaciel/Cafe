@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private SoundManager soundManager;
     private AutomaticCam camSpeed;
     // powerup
+    public GameObject go2X;
     private bool superSpeed = false; // powerup super velocidade
     private float speTime = 1.3f, speCounter; // tempo max do powerup
     // dogs
@@ -167,6 +168,7 @@ public class PlayerController : MonoBehaviour
             speed = velNormal;
             camSpeed.speed = velNormal;
             pm.multiplicador = 1;
+            go2X.SetActive(false);
         }
 
         // invencibilidade
@@ -294,12 +296,13 @@ public class PlayerController : MonoBehaviour
                     speTime = 2f;
                     pm.multiplicador = 2;
                     speCounter = speTime;
+                    go2X.SetActive(true); // efeito na tela
                 }
                 Destroy(col.gameObject);
                 break;
         }
     }
-    float zz = 1f;
+    
     void Jump () // metodo de pulo
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, platformLayer); // checa se ta no chao
