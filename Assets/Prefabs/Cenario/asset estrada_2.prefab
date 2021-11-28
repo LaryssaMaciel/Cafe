@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5673539804483033847}
   - component: {fileID: 6230416074082045493}
   - component: {fileID: 4743186230247385848}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: asset estrada_2
   m_TagString: platf
   m_Icon: {fileID: 0}
