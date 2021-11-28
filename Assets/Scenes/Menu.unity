@@ -1431,8 +1431,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.021879438, y: 0}
   m_AnchorMax: {x: 0.9718795, y: 1}
-  m_AnchoredPosition: {x: 2, y: -1}
-  m_SizeDelta: {x: 58.317, y: -18.576}
+  m_AnchoredPosition: {x: 2.2500916, y: -1}
+  m_SizeDelta: {x: 64.071, y: -18.576}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &406504578
 MonoBehaviour:
@@ -1469,7 +1469,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Fa\xE7a o m\xE1ximo de entregas que puder. Colete os pedidos passando
     nos restaurantes e entregue aos clientes.\nVoc\xEA pode pular mais alto segurando
-    o bot\xE3o de pulo. \nEvite os obst\xE1culos."
+    o bot\xE3o de pulo e ganhar moedas extras fazendo manobras.\nEvite os obst\xE1culos."
 --- !u!222 &406504579
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1575,8 +1575,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 154.82141, y: -156.51555}
-  m_SizeDelta: {x: 669.6546, y: 132.2727}
+  m_AnchoredPosition: {x: 136.42, y: -158}
+  m_SizeDelta: {x: 628.17, y: 158.605}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472922610
 MonoBehaviour:

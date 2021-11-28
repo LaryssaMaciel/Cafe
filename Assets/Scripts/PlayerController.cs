@@ -73,17 +73,19 @@ public class PlayerController : MonoBehaviour
         endlvl = GameObject.FindWithTag("end").GetComponent<EndLVLController>();
         _renderer = GetComponent<Renderer>();
         anim = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
+        sr = GetComponent<SpriteRenderer>(); 
         lifebar = GameObject.FindWithTag("lifebar").GetComponent<Image>();
         dogsCol = false;
         pm = GameObject.FindWithTag("txtPontos").GetComponent<PontuacaoManager>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
         audioSource = GetComponent<AudioSource>();
         motoAudio = GameObject.Find("FeetPos").GetComponent<AudioSource>();
-        carro = GameObject.FindWithTag("car").GetComponent<CarroController>();
         camSpeed = GameObject.FindWithTag("autoCam").GetComponent<AutomaticCam>();
         vidas = vidastotais;
     }
+
+    void Start() {carro = GameObject.FindWithTag("car").GetComponent<CarroController>();}
+
     bool playLost = false;
     void Update()
     {   // chama metodos
