@@ -5,6 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class BtnManager : MonoBehaviour
 {
+    int faseD = 0;
+    public GameObject[] fases;
+    void Start()
+    {
+        faseD = PlayerPrefs.GetInt("lvl");
+        //if (faseD <= 0 ) { faseD = 0; }
+        if (faseD == 0) { fases[0].SetActive(true); }
+        else if (faseD == 1) { fases[1].SetActive(true); }
+    }
+
     // GERENCIADOR DOS BOTÔES
 
     public AudioSource audioSource; // audio dos botoes
@@ -119,8 +129,10 @@ public class BtnManager : MonoBehaviour
     public void NextLvl() // ao clicar no btn next level no jogo, vai pra proxima fase
     {
         lvl++;
-        DontDestroyOnLoad(this.gameObject);
-        SceneManager.LoadScene("Jogo" + lvl.ToString());
+        //DontDestroyOnLoad(this.gameObject);
+        PlayerPrefs.SetInt("lvl", lvl);
         Time.timeScale = 1; // resume
+        SceneManager.LoadScene("Jogo" + lvl.ToString());
+        
     }
 }
