@@ -26,6 +26,8 @@ TagManager:
   - playPlat
   - playCol
   - btnUI
+  - dogsflw
+  - autoCam
   layers:
   - Default
   - TransparentFX

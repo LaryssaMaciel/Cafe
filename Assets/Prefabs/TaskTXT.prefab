@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97171b6b1eea6c4ab7ced3510afd636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minEntregas: 2
+  minEntregas: 7
 --- !u!23 &5140596637330708720
 MeshRenderer:
   m_ObjectHideFlags: 0

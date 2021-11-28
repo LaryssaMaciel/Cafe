@@ -21,7 +21,7 @@ public class BtnManager : MonoBehaviour
     }
     public void UnselectBtn(GameObject a) 
     { 
-        if (a.gameObject.tag == "btnUI") { x = 1.84275f; }
+        if (a.gameObject.tag == "btnUI") { x = 1.493812f; }
         else { x = 1; }
         a.gameObject.transform.localScale = new Vector3(x,x,x);
     }

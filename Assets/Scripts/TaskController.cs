@@ -6,7 +6,7 @@ using UnityEngine;
 public class TaskController : MonoBehaviour
 {
     public static TextMeshPro taskTxt; // texto da task no cenario
-    public int minEntregas = 2; // entregas minimas pra passar de fase
+    public int minEntregas = 7; // entregas minimas pra passar de fase
     
     void Start() => taskTxt = GetComponent<TextMeshPro>(); // acessa o texto
     

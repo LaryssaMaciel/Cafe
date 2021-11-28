@@ -22,7 +22,7 @@ public class DogsController : MonoBehaviour
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>(); // acessa o player
         rb = GetComponent<Rigidbody2D>(); // acessa rigdbody
         if (this.gameObject.name == "Dogs") { audioSource = GetComponent<AudioSource>(); } // acessa audio
-        dogsFollow = GameObject.Find("DogsFollow");
+        dogsFollow = GameObject.FindWithTag("dogsflw");
         // acessa scripts
         endLVL = GameObject.FindWithTag("end").GetComponent<EndLVLController>();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();

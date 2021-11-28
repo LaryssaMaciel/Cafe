@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("MOVIMENTACAO")]
     public float speed = 0f; // velocidade do player
-    public float velNormal = 10f;
+    public float velNormal = 9f;
     private Vector3 autoDir; // direcao da movimentacao automatica 
 
     [Header("PAUSE/ENDLVL")]
@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         motoAudio = GameObject.Find("FeetPos").GetComponent<AudioSource>();
         carro = GameObject.FindWithTag("car").GetComponent<CarroController>();
-        camSpeed = GameObject.Find("AutoCam").GetComponent<AutomaticCam>();
+        camSpeed = GameObject.FindWithTag("autoCam").GetComponent<AutomaticCam>();
         vidas = vidastotais;
     }
     bool playLost = false;
@@ -169,6 +169,8 @@ public class PlayerController : MonoBehaviour
                 speCounter = 0;
                 superSpeed = false;
             }
+            if (Input.GetKey(KeyCode.A)) { speed = 6.75f; } // vai pra trás mais devagar
+            else { speed = 13.5f; }
         }
         else // se nao tem powerup
         {   // volta velocidade a multiplicado normais
@@ -176,6 +178,7 @@ public class PlayerController : MonoBehaviour
             camSpeed.speed = velNormal;
             pm.multiplicador = 1;
             go2X.SetActive(false);
+            if (Input.GetKey(KeyCode.A)) { speed = velNormal - (velNormal * 0.5f); } // vai pra trás mais devagar
         }
 
         // invencibilidade
@@ -234,7 +237,7 @@ public class PlayerController : MonoBehaviour
             if (carro != null) {carro.audioSource.Stop(); }
         }
     }
-    
+    float re = 4.5f;
     void Movement() //movimentacao do player
     {
         // define direcao da movimentacao automatica
@@ -297,9 +300,9 @@ public class PlayerController : MonoBehaviour
                 // super velocidade
                 else if (col.gameObject.GetComponent<PowerUpManager>().tipo == "vel")
                 {
-                    speed = speed * 1.8f;
-                    camSpeed.speed = camSpeed.speed * 1.8f;
                     superSpeed = true;
+                    speed = speed * 1.5f;
+                    camSpeed.speed = camSpeed.speed * 1.5f;
                     speTime = 2f;
                     pm.multiplicador = 2;
                     speCounter = speTime;

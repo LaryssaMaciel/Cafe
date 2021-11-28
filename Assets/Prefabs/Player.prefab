@@ -44,7 +44,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.666541, y: 0}
+  m_Offset: {x: 1.5326061, y: -0.47848904}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.608011, y: 1}
+  m_Size: {x: 16.860273, y: 2.9139507}
   m_EdgeRadius: 0
 --- !u!1 &8609760575736976144
 GameObject:
@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 8609760576677782239}
   - component: {fileID: 2124768571762105352}
   - component: {fileID: 5312620224832663923}
+  - component: {fileID: 1302068456702249778}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -371,7 +372,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.039313316, y: -0.41199112}
+  m_Offset: {x: -0.24417019, y: -3.1179905}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -382,7 +383,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.976902, y: 11.718369}
+  m_Size: {x: 11.559479, y: 6.30637}
   m_EdgeRadius: 0
 --- !u!50 &8609760576677782239
 Rigidbody2D:
@@ -520,6 +521,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!61 &1302068456702249778
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8609760576677782236}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -3.1537635, y: 1.7088857}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 15, y: 15}
+    newSize: {x: 15, y: 15}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.4324117, y: 6.934062}
+  m_EdgeRadius: 0
 --- !u!1 &9154854436588769093
 GameObject:
   m_ObjectHideFlags: 0

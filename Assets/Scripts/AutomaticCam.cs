@@ -5,7 +5,7 @@ using UnityEngine;
 public class AutomaticCam : MonoBehaviour
 {
     //private PlayerController pc; // acessa variavel
-    public float speed = 10; // velocidade de movimento da camera
+    public float speed = 9; // velocidade de movimento da camera
     
     //void Start() => pc = GameObject.FindWithTag("Player").GetComponent<PlayerController>(); // acessa script
 

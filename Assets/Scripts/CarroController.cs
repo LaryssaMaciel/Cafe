@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CarroController : MonoBehaviour
 {
-    private float speed = 10f; // velocidade do carro 
+    private float speed = 7f; // velocidade do carro 
     private Transform player; // auxiliar
     public AudioSource audioSource; // audio do carro
     public bool visible; // se ta perto do player/na tela
