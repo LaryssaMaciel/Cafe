@@ -28,6 +28,7 @@ TagManager:
   - btnUI
   - dogsflw
   - autoCam
+  - shield
   layers:
   - Default
   - TransparentFX

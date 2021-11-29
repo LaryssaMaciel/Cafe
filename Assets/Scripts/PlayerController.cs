@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private SoundManager soundManager;
     private AutomaticCam camSpeed;
     // powerup
-    public GameObject go2X;
+    public GameObject go2X, shield;
     private bool superSpeed = false; // powerup super velocidade
     private float speTime = 1.3f, speCounter; // tempo max do powerup
     // dogs
@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
     {
         // configurando variaveis
         gameOver = false;
+        //shield = GameObject.FindWithTag("shield");
         rb = GetComponent<Rigidbody2D>();
         endlvl = GameObject.FindWithTag("end").GetComponent<EndLVLController>();
         _renderer = GetComponent<Renderer>();
@@ -159,7 +160,7 @@ public class PlayerController : MonoBehaviour
 
         lifebar.fillAmount = vidas / vidastotais; // life bar
     }
-
+    bool invPower = false;
     float blinkTime = .10f, blinkCounter = 0; // timers pra piscar o player
     void PowerUps()
     {
@@ -186,18 +187,41 @@ public class PlayerController : MonoBehaviour
         // invencibilidade
         if (invencivel)
         {
-            sr.color = new Color(1f, 1f, 1f, .5f); // fica meio transparente
-            if (invCounter > 0) { invCounter -= Time.deltaTime; } // diminui tempo do powerup
-            else { // acaba poweup
-                invCounter = 0;
-                invencivel = false;
+            if (invPower)
+            {
+                if (invCounter > 0) 
+                { 
+                    shield.SetActive(true);
+                    invCounter -= Time.deltaTime; // diminui tempo do powerup
+                } 
+                else { // acaba poweup
+                    invCounter = 0;
+                    invencivel = false;
+                    invPower = false;
+                    shield.SetActive(false);
+                }
             }
-            
-            // pisca player
-            if (blinkCounter > 0) { blinkCounter -= Time.deltaTime; } // diminui tempo do powerup
-            else { // acaba blink
-                _renderer.enabled = !_renderer.enabled;
-                blinkCounter = blinkTime;
+            else
+            {
+                // sr.color = new Color(1f, 1f, 1f, .5f); // fica meio transparente
+                if (invCounter > 0) 
+                { 
+                    //shield.SetActive(true);
+                    invCounter -= Time.deltaTime; // diminui tempo do powerup
+                } 
+                else { // acaba poweup
+                    invCounter = 0;
+                    invencivel = false;
+                    invPower = true;
+                    //shield.SetActive(false);
+                }
+                
+                // pisca player
+                if (blinkCounter > 0) { blinkCounter -= Time.deltaTime; } // diminui tempo do powerup
+                else { // acaba blink
+                    _renderer.enabled = !_renderer.enabled;
+                    blinkCounter = blinkTime;
+                }
             }
         }
         else
@@ -296,6 +320,7 @@ public class PlayerController : MonoBehaviour
                 if (col.gameObject.GetComponent<PowerUpManager>().tipo == "inv")
                 {  
                     invencivel = true;
+                    invPower = true;
                     invTime = 1.3f;
                     invCounter = invTime;
                 }
