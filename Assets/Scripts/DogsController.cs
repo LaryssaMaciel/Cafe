@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DogsController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private float speed; // velocidade dos dogs
+    public float speed; // velocidade dos dogs
     private float jumpCounter, jumpTime = .2f, jumpForce; // contador, tempo max e forca do pulo
     public AudioSource audioSource; // audio dos dogs
     public GameObject dogsFollow;
@@ -30,7 +30,7 @@ public class DogsController : MonoBehaviour
 
     void Update()
     {
-        if (pc.speed > 4.5f) {speed = pc.speed; } // atualiza velocidade de acordo com a do player
+        if (pc.speed > 7f) { speed = pc.speed; } // atualiza velocidade de acordo com a do player
         Movement(); // chama metodo de movimentacao
         
 

@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviour
                 else { // acaba poweup
                     invCounter = 0;
                     invencivel = false;
-                    invPower = true;
+                    invPower = false;
                     //shield.SetActive(false);
                 }
                 

@@ -10,9 +10,7 @@ public class BtnManager : MonoBehaviour
     void Start()
     {
         faseD = PlayerPrefs.GetInt("lvl");
-        //if (faseD <= 0 ) { faseD = 0; }
-        if (faseD == 0) { fases[0].SetActive(true); }
-        else if (faseD == 1) { fases[1].SetActive(true); }
+        if (faseD == 1) { fases[1].SetActive(true); }
     }
 
     // GERENCIADOR DOS BOTÔES
@@ -65,8 +63,21 @@ public class BtnManager : MonoBehaviour
     }
 
     // Fases
-    public void Fase1() => SceneManager.LoadScene("Jogo"); // vai pra fase 1
-    public void Fase2() => SceneManager.LoadScene("Jogo1"); // vai pra fase 2
+    public void Fase1() 
+    {
+        PlayerPrefs.SetInt("lvl", 0);
+        SceneManager.LoadScene("Jogo"); // vai pra fase 1
+    }
+    public void Fase2() 
+    {
+        PlayerPrefs.SetInt("lvl", 1);
+        SceneManager.LoadScene("Jogo1"); // vai pra fase 2
+    }
+    public void Fase3() 
+    {
+        PlayerPrefs.SetInt("lvl", 2);
+        SceneManager.LoadScene("Jogo2"); // vai pra fase 2
+    }
 
     public GameObject goCredits; // botao de creditos
     public void Credits() // se clicar no botao creditos mostra creditos
@@ -125,14 +136,15 @@ public class BtnManager : MonoBehaviour
         goSettings.SetActive(true); 
     }
 
-    public int lvl = 0; // numero da fase (0 = fase 1 || 1 = fase 2)
-    public void NextLvl() // ao clicar no btn next level no jogo, vai pra proxima fase
-    {
-        lvl++;
-        //DontDestroyOnLoad(this.gameObject);
-        PlayerPrefs.SetInt("lvl", lvl);
-        Time.timeScale = 1; // resume
-        SceneManager.LoadScene("Jogo" + lvl.ToString());
+    // public int lvl = 0; // numero da fase (0 = fase 1 || 1 = fase 2)
+    // public void NextLvl() // ao clicar no btn next level no jogo, vai pra proxima fase
+    // {
+    //     lvl++;
+    //     print(lvl);
+    //     DontDestroyOnLoad(this.gameObject);
+    //     PlayerPrefs.SetInt("lvl", lvl);
+    //     Time.timeScale = 1; // resume
+    //     SceneManager.LoadScene("Jogo" + lvl.ToString());
         
-    }
+    // }
 }
