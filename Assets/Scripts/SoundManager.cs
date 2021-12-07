@@ -29,9 +29,11 @@ public class SoundManager : MonoBehaviour
         switch (sceneName)
         {   // define musica principal da cena
             case "Menu":
-                AudioManager(3); // som de menu
+                AudioManager(5); // som de menu
                 break;
             case "Jogo":
+                AudioManager(4);
+                break;
             case "Jogo1":
                 //AudioManager(0); // som de gameplay
                 break;

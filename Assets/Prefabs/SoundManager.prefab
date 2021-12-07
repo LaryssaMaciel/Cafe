@@ -59,6 +59,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b7a90c9641628f04dbec8939c4b6bc93, type: 3}
   - {fileID: 8300000, guid: 0ac01e906323867408fd8229341fd165, type: 3}
   - {fileID: 8300000, guid: 1ce70266b4dfb2a48957a4d3c60ad898, type: 3}
+  - {fileID: 8300000, guid: adadd8a64d03cb24da3f411114284a3f, type: 3}
+  - {fileID: 8300000, guid: 80014f00570932e4998e13c3c353f7b0, type: 3}
   audioSource: {fileID: 0}
   MusMixer: {fileID: 0}
   GamMixer: {fileID: 0}

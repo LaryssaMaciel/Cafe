@@ -7349,6 +7349,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MudaCenario
       objectReference: {fileID: 0}
+    - target: {fileID: 3402774706402400842, guid: eb0f682a684a78c4d877334b326471b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3402774706402400843, guid: eb0f682a684a78c4d877334b326471b2, type: 3}
       propertyPath: soundManager
       value: 
@@ -14424,6 +14428,10 @@ PrefabInstance:
     - target: {fileID: 3402774706402400842, guid: eb0f682a684a78c4d877334b326471b2, type: 3}
       propertyPath: m_Name
       value: MudaCenario1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402774706402400842, guid: eb0f682a684a78c4d877334b326471b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3402774706402400843, guid: eb0f682a684a78c4d877334b326471b2, type: 3}
       propertyPath: soundManager
