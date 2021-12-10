@@ -321,7 +321,7 @@ public class PlayerController : MonoBehaviour
                 {  
                     invencivel = true;
                     invPower = true;
-                    invTime = 1.3f;
+                    invTime = 6f;
                     invCounter = invTime;
                 }
                 // super velocidade
