@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &209251515
 RectTransform:
   m_ObjectHideFlags: 0
@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 11.238892, y: -1.5429077}
-  m_SizeDelta: {x: -231.5222, y: -122.9143}
+  m_AnchoredPosition: {x: 12, y: 30}
+  m_SizeDelta: {x: -284.6808, y: -170.7571}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &209251516
 MonoBehaviour:
@@ -231,7 +231,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295761357}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: ec8b028508b388747a0ddc4685ebd9ea, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 75005f21852a48b4db6cfb97a39f8207, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 665947083}
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "espa\xE7o para pular"
+  m_text: "espa\xE7o para sair"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
