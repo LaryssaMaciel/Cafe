@@ -7,12 +7,21 @@ using UnityEngine.SceneManagement;
 public class CutsceneManager : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
+    public static bool fim = false;
 
     void Update()
     {
         if ((videoPlayer.frame > 0 && !videoPlayer.isPlaying) || Input.GetKey(KeyCode.Space))
         {
-            SceneManager.LoadScene("Menu");
+            if (SceneManager.GetActiveScene().name == "Custcene")
+            {
+                SceneManager.LoadScene("Menu");
+            }
+            else if (SceneManager.GetActiveScene().name == "Jogo2")
+            {
+                fim = true;
+                SceneManager.LoadScene("Menu");
+            }
         }
     }
 }

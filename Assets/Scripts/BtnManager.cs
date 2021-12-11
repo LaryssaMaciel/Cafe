@@ -11,6 +11,12 @@ public class BtnManager : MonoBehaviour
     {
         faseD = PlayerPrefs.GetInt("lvl");
         if (faseD == 1) { fases[1].SetActive(true); }
+
+        if (CutsceneManager.fim == true)
+        {
+            Credits();
+            
+        }
     }
 
     // GERENCIADOR DOS BOTÔES
